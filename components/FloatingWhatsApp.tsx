@@ -8,7 +8,8 @@ const FloatingWhatsApp: React.FC = () => {
       href={BUSINESS_INFO.whatsappLink}
       target="_blank"
       rel="noopener noreferrer"
-      className="fixed bottom-6 right-6 z-50 group"
+      // Added 'mb-24 md:mb-0' to lift the button on mobile so it doesn't overlap with the bottom CTA bar
+      className="fixed bottom-6 right-6 mb-20 md:mb-0 z-50 group"
       aria-label="Fale conosco no WhatsApp"
     >
       <span className="absolute -top-10 right-0 bg-white text-slate-900 text-xs font-bold px-3 py-1 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300 shadow-lg whitespace-nowrap">

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Send, TrendingUp, Truck, ShieldCheck, Wrench, Handshake, CheckCircle2, Package, Battery } from 'lucide-react';
+import { Send, TrendingUp, Truck, ShieldCheck, Wrench, Handshake, CheckCircle2, Package, Battery, BarChart3, Users, Megaphone } from 'lucide-react';
 
 const benefits = [
   {
@@ -40,7 +40,7 @@ const brands = [
 const ResellerAndProducts: React.FC = () => {
   return (
     <section id="reseller" className="bg-slate-50 relative overflow-hidden">
-      {/* Background Elements - Adjusted for Light Mode */}
+      {/* Background Elements */}
       <div className="absolute inset-0 bg-[linear-gradient(rgba(0,0,0,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(0,0,0,0.03)_1px,transparent_1px)] bg-[size:40px_40px] opacity-50"></div>
       
       {/* Hero Strip */}
@@ -107,6 +107,37 @@ const ResellerAndProducts: React.FC = () => {
 
       <div className="max-w-7xl mx-auto px-6 py-20">
         
+        {/* Persuasive Arguments Block */}
+        <div className="mb-20 grid grid-cols-1 lg:grid-cols-3 gap-8">
+            <div className="bg-blue-50 p-8 rounded-2xl border border-blue-100">
+               <div className="w-12 h-12 bg-blue-600 rounded-xl flex items-center justify-center text-white mb-6">
+                  <BarChart3 size={24} />
+               </div>
+               <h4 className="text-xl font-bold text-slate-900 mb-4">Aumente seu Faturamento</h4>
+               <p className="text-slate-600 leading-relaxed">
+                  Não perca vendas por falta de produto. Com nosso mix completo de baterias (motos, carros, caminhões e estacionárias), sua loja atende 100% da demanda. Oferecemos preços competitivos para que sua margem seja saudável.
+               </p>
+            </div>
+            <div className="bg-yellow-50 p-8 rounded-2xl border border-yellow-100">
+               <div className="w-12 h-12 bg-yellow-500 rounded-xl flex items-center justify-center text-blue-900 mb-6">
+                  <Megaphone size={24} />
+               </div>
+               <h4 className="text-xl font-bold text-slate-900 mb-4">Marketing Cooperado</h4>
+               <p className="text-slate-600 leading-relaxed">
+                  Revendedor Guanda não está sozinho. Oferecemos suporte em materiais de ponto de venda (banners, expositores) e campanhas para atrair clientes para a sua porta. Sua marca cresce junto com a nossa.
+               </p>
+            </div>
+            <div className="bg-white p-8 rounded-2xl border border-slate-200 shadow-sm">
+               <div className="w-12 h-12 bg-slate-800 rounded-xl flex items-center justify-center text-white mb-6">
+                  <Users size={24} />
+               </div>
+               <h4 className="text-xl font-bold text-slate-900 mb-4">Consultoria Especializada</h4>
+               <p className="text-slate-600 leading-relaxed">
+                  Dúvidas sobre qual bateria aplicar em um carro start-stop novo? Nossa equipe técnica está a uma ligação de distância. Treinamos seus funcionários para que eles vendam com confiança e precisão.
+               </p>
+            </div>
+        </div>
+
         {/* Benefits Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-20">
            {benefits.map((item, idx) => (

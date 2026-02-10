@@ -3,11 +3,86 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Guanda Baterias | Energia em Minutos</title>
+    <title>Guanda Baterias | Energia em Minutos - Bauru e Região</title>
+    <meta name="description" content="Baterias automotivas, moto e estacionárias em Bauru. Entrega e instalação grátis em minutos. Revendedor oficial Heliar, Cral, Moura e mais.">
+    <meta name="keywords" content="bateria automotiva, bateria moura, bateria heliar, bateria bauru, disk bateria, troca de bateria, bateria de moto">
+    <meta name="author" content="Guanda Baterias">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.guandabaterias.com.br/">
+    <meta property="og:title" content="Guanda Baterias | Energia em Minutos">
+    <meta property="og:description" content="Baterias automotivas com entrega e instalação grátis em Bauru. As melhores marcas com o melhor preço.">
+    <meta property="og:image" content="https://www.guandabaterias.com.br/wp-content/uploads/2019/09/baterias-automotivas.png">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://www.guandabaterias.com.br/">
+    <meta property="twitter:title" content="Guanda Baterias | Energia em Minutos">
+    <meta property="twitter:description" content="Baterias automotivas com entrega e instalação grátis em Bauru.">
+    <meta property="twitter:image" content="https://www.guandabaterias.com.br/wp-content/uploads/2019/09/baterias-automotivas.png">
+
+    <link rel="icon" href="https://instagram.fbau6-1.fna.fbcdn.net/v/t51.2885-19/103903860_397650244527481_2692401706699709611_n.jpg?stp=dst-jpg_s320x320_tt6&efg=eyJ2ZW5jb2RlX3RhZyI6InByb2ZpbGVfcGljLmRqYW5nby41MjcuYzIifQ&_nc_ht=instagram.fbau6-1.fna.fbcdn.net&_nc_cat=101&_nc_oc=Q6cZ2QFhnwECUQp3rudm0op96amrX9jQSV4HLwndRx8WZZ1qu4ZgX7Qqv8GXrM2lzrMXX04&_nc_ohc=W4ahlH3BoT8Q7kNvwGL2Eji&_nc_gid=v6suPLBnxbHjr0qWOxa2pg&edm=AOQ1c0wBAAAA&ccb=7-5&oh=00_AfutBlvI1eTzLQxWSbegwodF_CF0kidz7YG3mX2DnvvdJw&oe=6991788D&_nc_sid=8b3546">
+    
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,100..900;1,100..900&family=Inter:wght@100..900&display=swap" rel="stylesheet">
+    
+    <!-- Schema.org Markup for Local Business -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "AutoPartsStore",
+      "name": "Guanda Baterias",
+      "image": [
+        "https://www.guandabaterias.com.br/wp-content/uploads/2019/10/cropped-logo-guanda-baterias-.png"
+      ],
+      "telephone": "14 3103-0303",
+      "url": "https://www.guandabaterias.com.br/",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Av. Nações Unidas, 38",
+        "addressLocality": "Bauru",
+        "addressRegion": "SP",
+        "postalCode": "17010-130",
+        "addressCountry": "BR"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": -22.327179,
+        "longitude": -49.052671
+      },
+      "openingHoursSpecification": [
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": [
+            "Monday",
+            "Tuesday",
+            "Wednesday",
+            "Thursday",
+            "Friday"
+          ],
+          "opens": "08:00",
+          "closes": "18:00"
+        },
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": "Saturday",
+          "opens": "08:00",
+          "closes": "12:00"
+        }
+      ],
+      "priceRange": "$$",
+      "sameAs": [
+        "https://www.facebook.com/profile.php?id=100041698969410",
+        "https://www.instagram.com/guandabaterias/",
+        "https://x.com/guandabaterias"
+      ]
+    }
+    </script>
+
     <style>
       body {
         font-family: 'Inter', sans-serif;
@@ -43,6 +118,33 @@
       .text-glow {
         text-shadow: 0 0 20px rgba(37, 99, 235, 0.2);
       }
+
+      /* Critical CSS for Initial Loader */
+      #initial-loader {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        background-color: #f8fafc;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        z-index: 9999;
+        transition: opacity 0.5s ease-out;
+      }
+      .loader-spinner {
+        width: 50px;
+        height: 50px;
+        border: 4px solid #e2e8f0;
+        border-top: 4px solid #1d4ed8; /* blue-700 */
+        border-radius: 50%;
+        animation: spin 1s linear infinite;
+      }
+      @keyframes spin {
+        0% { transform: rotate(0deg); }
+        100% { transform: rotate(360deg); }
+      }
     </style>
   <script type="importmap">
 {
@@ -57,6 +159,14 @@
 </script>
 </head>
   <body>
-    <div id="root"></div>
+    <div id="root">
+      <!-- Content here is visible immediately while React loads (No White Screen) -->
+      <div id="initial-loader">
+        <div class="flex flex-col items-center gap-4">
+           <div class="loader-spinner"></div>
+           <p style="color: #1e3a8a; font-family: sans-serif; font-weight: bold; font-size: 14px;">Carregando Guanda...</p>
+        </div>
+      </div>
+    </div>
   </body>
 </html>

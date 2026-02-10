@@ -8,11 +8,17 @@ export const BUSINESS_INFO = {
   whatsappLink: "https://api.whatsapp.com/send?phone=5514997411584",
 };
 
+export const SOCIAL_LINKS = {
+  facebook: "https://www.facebook.com/profile.php?id=100041698969410",
+  instagram: "https://www.instagram.com/guandabaterias/",
+  x: "https://x.com/guandabaterias"
+};
+
 export const NAV_LINKS = [
   { name: 'Início', href: '#hero' },
   // 'Produtos' is handled specially in the Navbar component
   { name: 'Quem Somos', href: '#about-us' },
-  { name: 'Dicas', href: '#blog' }, // New Blog Link
+  { name: 'Blog', href: '#blog' }, // Renamed from Dicas
   { name: 'Revendedor', href: '#reseller' },
   { name: 'Contato', href: '#footer' },
 ];

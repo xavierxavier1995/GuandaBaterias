@@ -23,7 +23,8 @@ const ProductShowcase: React.FC = () => {
                 <p className="text-slate-600 text-lg leading-relaxed">
                   {category.description}
                 </p>
-                <div className="mt-8">
+                {/* Desktop Button - Hidden on Mobile */}
+                <div className="mt-8 hidden lg:block">
                   <a 
                     href={`${BUSINESS_INFO.whatsappLink}&text=Olá, gostaria de saber mais sobre ${category.title}`}
                     target="_blank"
@@ -36,14 +37,32 @@ const ProductShowcase: React.FC = () => {
                 </div>
               </div>
 
-              <div className="lg:w-1/2 relative group perspective-1000">
+              <div className="lg:w-1/2 relative group perspective-1000 flex justify-center">
                  <div className="absolute inset-0 bg-blue-500/10 rounded-full blur-3xl transform group-hover:scale-110 transition-transform duration-700"></div>
+                 {/* Explicit width/height added for CLS prevention */}
                  <img 
                     src={category.heroImage} 
-                    alt={category.title} 
-                    className="relative z-10 w-full max-h-[400px] object-contain drop-shadow-2xl transform transition-transform duration-500 group-hover:rotate-2 group-hover:scale-105"
+                    alt={`Imagem ilustrativa de ${category.title}`}
+                    className="relative z-10 w-full max-w-[400px] h-auto object-contain drop-shadow-2xl transform transition-transform duration-500 group-hover:rotate-2 group-hover:scale-105"
+                    width="400"
+                    height="400"
+                    loading="lazy"
                  />
               </div>
+
+              {/* Mobile Button - Visible only on mobile, placed after image */}
+              <div className="w-full text-center lg:hidden mt-4">
+                <a 
+                  href={`${BUSINESS_INFO.whatsappLink}&text=Olá, gostaria de saber mais sobre ${category.title}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center justify-center gap-2 bg-blue-700 hover:bg-blue-800 text-white font-bold py-4 px-8 rounded-xl shadow-lg transition-all w-full"
+                >
+                  <ShoppingCart size={20} />
+                  Consultar Preços
+                </a>
+              </div>
+
             </div>
           </div>
         </section>

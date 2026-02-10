@@ -1,6 +1,6 @@
 import React from 'react';
-import { MapPin, Phone, Instagram, Facebook } from 'lucide-react';
-import { BUSINESS_INFO } from '../constants';
+import { MapPin, Phone, Instagram, Facebook, Twitter } from 'lucide-react';
+import { BUSINESS_INFO, SOCIAL_LINKS } from '../constants';
 
 const Footer: React.FC = () => {
   return (
@@ -13,8 +13,10 @@ const Footer: React.FC = () => {
                  <div className="bg-white rounded-lg p-2 w-fit mb-4">
                     <img 
                       src="https://www.guandabaterias.com.br/wp-content/uploads/2019/10/cropped-logo-guanda-baterias-.png" 
-                      alt="Guanda Baterias" 
+                      alt="Guanda Baterias Logo" 
                       className="h-10 w-auto object-contain"
+                      width="150"
+                      height="40"
                     />
                  </div>
               </div>
@@ -22,11 +24,32 @@ const Footer: React.FC = () => {
                 Há 30 anos fornecendo energia e confiança para Bauru e região. Tecnologia de ponta, entrega rápida e o melhor atendimento da cidade.
               </p>
               <div className="flex gap-4">
-                 <a href="#" className="w-10 h-10 rounded-full bg-slate-800 flex items-center justify-center text-slate-400 hover:text-white hover:bg-blue-700 transition-all">
+                 <a 
+                   href={SOCIAL_LINKS.instagram}
+                   target="_blank"
+                   rel="noopener noreferrer"
+                   className="w-10 h-10 rounded-full bg-slate-800 flex items-center justify-center text-slate-400 hover:text-white hover:bg-blue-700 transition-all"
+                   aria-label="Siga-nos no Instagram"
+                 >
                     <Instagram size={20} />
                  </a>
-                 <a href="#" className="w-10 h-10 rounded-full bg-slate-800 flex items-center justify-center text-slate-400 hover:text-white hover:bg-blue-700 transition-all">
+                 <a 
+                   href={SOCIAL_LINKS.facebook}
+                   target="_blank"
+                   rel="noopener noreferrer"
+                   className="w-10 h-10 rounded-full bg-slate-800 flex items-center justify-center text-slate-400 hover:text-white hover:bg-blue-700 transition-all"
+                   aria-label="Curta nossa página no Facebook"
+                 >
                     <Facebook size={20} />
+                 </a>
+                 <a 
+                   href={SOCIAL_LINKS.x}
+                   target="_blank"
+                   rel="noopener noreferrer"
+                   className="w-10 h-10 rounded-full bg-slate-800 flex items-center justify-center text-slate-400 hover:text-white hover:bg-blue-700 transition-all"
+                   aria-label="Siga-nos no X (Twitter)"
+                 >
+                    <Twitter size={20} />
                  </a>
               </div>
            </div>

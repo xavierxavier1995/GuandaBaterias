@@ -82,7 +82,7 @@ const Hero: React.FC = () => {
           </div>
         </div>
 
-        {/* Visual Column - 3D Battery Presentation */}
+        {/* Visual Column - 3D Battery Presentation (LCP Image) */}
         <div className="hidden lg:flex relative items-center justify-center perspective-1000">
            <div className="absolute inset-0 bg-gradient-to-tr from-blue-500/20 to-transparent rounded-full blur-3xl"></div>
            
@@ -91,8 +91,11 @@ const Hero: React.FC = () => {
               
               <img 
                 src="https://www.guandabaterias.com.br/wp-content/uploads/2019/09/baterias-automotivas.png" 
-                alt="Bateria Premium Guanda" 
+                alt="Bateria Automotiva Heliar Premium - Guanda Baterias" 
                 className="w-[90%] h-auto object-contain transform transition-transform duration-700 group-hover:scale-105 z-20 drop-shadow-2xl"
+                width="400"
+                height="400"
+                fetchPriority="high" // Critical for Web Vitals (LCP)
               />
               
               {/* Overlay UI Elements */}
