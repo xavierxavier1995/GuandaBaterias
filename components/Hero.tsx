@@ -87,63 +87,43 @@ const Hero: React.FC = () => {
           </div>
         </div>
 
-        {/* Visual Column - Composition of Batteries */}
-        <div className="relative flex justify-center lg:justify-end mt-16 lg:mt-0 h-[400px] md:h-[500px] w-full max-w-[600px] mx-auto lg:mx-0">
+        {/* Visual Column - Pure Abstract Energy Composition */}
+        <div className="relative flex items-center justify-center mt-16 lg:mt-0 h-[500px] w-full max-w-[600px] mx-auto lg:mx-0">
              
-             {/* Abstract Background Blurs */}
-             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[140%] h-[140%] bg-blue-100/40 rounded-full blur-[80px] -z-20"></div>
-             <div className="absolute top-1/4 right-0 w-64 h-64 bg-yellow-100/60 rounded-full blur-[60px] -z-10 animate-pulse"></div>
-
-             {/* Moto Battery (Back Left) */}
-             <div className="absolute top-10 -left-4 md:-left-12 w-40 md:w-56 z-10 opacity-90 transform -rotate-6 transition-transform hover:scale-105 duration-500">
-                <img 
-                   src="https://www.guandabaterias.com.br/wp-content/uploads/2019/09/baterias-de-moto.png" 
-                   alt="Bateria de Moto" 
-                   className="w-full h-auto drop-shadow-2xl"
-                />
-                 {/* Small Badge */}
-                 <div className="absolute -bottom-4 left-4 bg-white/90 backdrop-blur py-1 px-3 rounded-lg shadow-lg border border-slate-100 hidden md:block">
-                    <p className="text-[10px] font-bold text-slate-900 uppercase">Linha Moto</p>
-                 </div>
+             {/* Dynamic Energy Background Glow */}
+             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[140%] h-[140%] bg-gradient-to-tr from-blue-300/20 via-transparent to-yellow-200/20 rounded-full blur-[80px] -z-20 animate-pulse"></div>
+             
+             {/* 1. Giant Yellow Bolt (Background Foundation) */}
+             <div className="absolute text-yellow-400/10 z-0 transform rotate-[-15deg] scale-150 animate-pulse">
+                <Zap size={400} fill="currentColor" />
              </div>
 
-             {/* Stationary Battery (Back Right) */}
-             <div className="absolute top-20 -right-4 md:-right-8 w-40 md:w-56 z-0 opacity-80 transform rotate-6 transition-transform hover:scale-105 duration-500">
-                <img 
-                   src="https://www.guandabaterias.com.br/wp-content/uploads/2019/09/baterias-estacionarias.png" 
-                   alt="Bateria Estacionária" 
-                   className="w-full h-auto drop-shadow-2xl grayscale-[0.3]"
-                />
+             {/* 2. Large Blue Neon Bolt (Main Focus) */}
+             <div className="absolute text-blue-600 z-10 transform rotate-[10deg] drop-shadow-[0_0_50px_rgba(37,99,235,0.6)] animate-bounce-slow hover:text-blue-500 transition-colors">
+                <Zap size={280} fill="currentColor" />
              </div>
 
-             {/* Main Automotive Battery (Front Center) */}
-             <div className="absolute bottom-10 md:bottom-0 left-1/2 -translate-x-1/2 w-64 md:w-80 lg:w-96 z-20 transition-transform hover:scale-105 duration-500">
-                 <img 
-                    src="https://www.guandabaterias.com.br/wp-content/uploads/2019/09/baterias-automotivas.png" 
-                    alt="Bateria Automotiva Premium" 
-                    className="w-full h-auto drop-shadow-[0_20px_50px_rgba(29,78,216,0.3)]"
-                    fetchPriority="high"
-                  />
-                  
-                  {/* Floating Main Badge */}
-                  <div className="absolute -top-6 -right-6 md:-right-12 bg-white/90 backdrop-blur-md shadow-2xl border border-white/50 rounded-2xl p-4 flex items-center gap-3 animate-bounce-slow hover:animate-none">
-                    <div className="bg-yellow-400 p-2 rounded-full text-blue-900">
-                       <Zap size={20} fill="currentColor" />
-                    </div>
-                    <div>
-                        <p className="text-[10px] font-bold text-slate-500 uppercase tracking-wider mb-0.5">Tecnologia</p>
-                        <p className="text-base font-black text-slate-900 leading-none">EFB / AGM</p>
-                    </div>
-                </div>
-
-                {/* Additional floating tag */}
-                <div className="absolute bottom-8 -left-8 md:-left-16 bg-blue-600/90 backdrop-blur-md shadow-xl border border-blue-500 rounded-xl py-2 px-4 text-white transform rotate-3 hidden md:block">
-                   <p className="text-xs font-bold flex items-center gap-1">
-                      <span className="w-2 h-2 bg-green-400 rounded-full animate-pulse"></span>
-                      Pronta Entrega
-                   </p>
-                </div>
+             {/* 3. Secondary Blue Bolt (Crossing) */}
+             <div className="absolute text-blue-400/80 z-20 transform rotate-[-25deg] translate-x-10 translate-y-10 drop-shadow-[0_0_20px_rgba(96,165,250,0.5)]">
+                <Zap size={180} fill="currentColor" />
              </div>
+
+             {/* 4. Sharp Yellow Spark (Accent) */}
+             <div className="absolute top-10 right-10 md:right-20 text-yellow-500 z-20 transform rotate-[45deg] animate-pulse">
+                <Zap size={60} fill="currentColor" />
+             </div>
+
+             {/* 5. Small Blue Sparks (Floating) */}
+             <div className="absolute bottom-20 left-10 md:left-20 text-blue-300 z-0 transform rotate-[15deg] blur-[1px]">
+                <Zap size={40} fill="currentColor" />
+             </div>
+             
+             <div className="absolute top-20 left-0 text-blue-200 z-0 transform rotate-[-45deg] opacity-50">
+                <Zap size={30} fill="currentColor" />
+             </div>
+
+             {/* Decorative Rings/Orbits */}
+             <div className="absolute inset-0 border border-blue-100/20 rounded-full w-[80%] h-[80%] top-[10%] left-[10%] animate-[spin_10s_linear_infinite] border-dashed"></div>
         </div>
       </div>
     </section>
