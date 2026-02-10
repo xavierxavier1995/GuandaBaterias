@@ -1,6 +1,8 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
+import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 import { Menu, X, BatteryCharging, ChevronDown, Loader2 } from 'lucide-react';
 import { NAV_LINKS, BUSINESS_INFO, PRODUCT_CATEGORIES } from '../constants';
 
@@ -12,40 +14,15 @@ const Navbar: React.FC<NavbarProps> = ({ onNavigate }) => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [productsDropdownOpen, setProductsDropdownOpen] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
-  // Basic safe pathname retrieval for hydration safety
-  const [pathname, setPathname] = useState('');
+  const pathname = usePathname();
 
-  useEffect(() => {
-    if (typeof window !== 'undefined') {
-      setPathname(window.location.pathname);
+  const handleLinkClick = (e?: React.MouseEvent, href?: string) => {
+    // If it's the home link and we have an onNavigate prop (SPA mode), call it.
+    if ((href === '/' || href === '/#') && onNavigate) {
+       e?.preventDefault();
+       onNavigate();
     }
-  }, []);
-
-  const handleNavigation = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
     setMobileMenuOpen(false);
-
-    // If onNavigate is provided (SPA mode from App.tsx), handle Home link specially
-    if (onNavigate && href === '/') {
-      e.preventDefault();
-      onNavigate();
-      return;
-    }
-
-    if (href.startsWith('#')) {
-      e.preventDefault();
-      // SPA mode check (App.tsx usually runs at root) or Next.js Home
-      const isHome = typeof window !== 'undefined' ? (window.location.pathname === '/' || window.location.pathname === '/index.html') : true;
-
-      if (!isHome) {
-        // If we are in a subpage (e.g. /blog/1), navigate to home + hash
-        window.location.href = '/' + href;
-      } else {
-        const element = document.querySelector(href);
-        if (element) {
-          element.scrollIntoView({ behavior: 'smooth' });
-        }
-      }
-    }
   };
 
   const handleWhatsappClick = (e: React.MouseEvent<HTMLAnchorElement>, message: string) => {
@@ -67,9 +44,9 @@ const Navbar: React.FC<NavbarProps> = ({ onNavigate }) => {
     >
       <div className="max-w-7xl mx-auto px-6 flex justify-between items-center">
         {/* Logo */}
-        <a 
+        <Link 
           href="/" 
-          onClick={(e) => handleNavigation(e, '/')}
+          onClick={(e) => handleLinkClick(e, '/')}
           className="flex items-center gap-2 group"
           aria-label="Voltar para página inicial"
         >
@@ -82,17 +59,17 @@ const Navbar: React.FC<NavbarProps> = ({ onNavigate }) => {
               height="60"
              />
           </div>
-        </a>
+        </Link>
 
         {/* Desktop Nav */}
         <div className="hidden md:flex items-center gap-8">
-          <a 
+          <Link 
             href="/" 
-            onClick={(e) => handleNavigation(e, '/')}
-            className="text-slate-700 hover:text-blue-700 font-bold text-sm tracking-wide transition-colors uppercase cursor-pointer"
+            onClick={(e) => handleLinkClick(e, '/')}
+            className="text-slate-700 hover:text-blue-700 font-bold text-sm tracking-wide transition-colors uppercase"
           >
             Início
-          </a>
+          </Link>
 
           {/* Produtos Dropdown */}
           <div className="relative group">
@@ -105,37 +82,35 @@ const Navbar: React.FC<NavbarProps> = ({ onNavigate }) => {
             <div className="absolute top-full left-1/2 -translate-x-1/2 pt-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform group-hover:translate-y-0 translate-y-2">
               <div className="bg-white rounded-xl shadow-2xl border border-slate-100 p-2 w-64 overflow-hidden">
                 {PRODUCT_CATEGORIES.map((cat) => (
-                  <a
+                  <Link
                     key={cat.id}
-                    href={`#${cat.id}`}
-                    onClick={(e) => handleNavigation(e, `#${cat.id}`)}
+                    href={`/#${cat.id}`}
                     className="block px-4 py-3 text-slate-700 hover:bg-blue-50 hover:text-blue-700 rounded-lg text-sm font-bold transition-colors cursor-pointer"
                   >
                     {cat.title}
-                  </a>
+                  </Link>
                 ))}
               </div>
             </div>
           </div>
 
           {NAV_LINKS.filter(l => l.name !== 'Início' && l.name !== 'Blog').map((link) => (
-            <a 
+            <Link 
               key={link.name} 
-              href={link.href} 
-              onClick={(e) => handleNavigation(e, link.href)}
+              href={link.href.startsWith('#') ? `/${link.href}` : link.href} 
               className="text-slate-700 hover:text-blue-700 font-bold text-sm tracking-wide transition-colors uppercase cursor-pointer"
             >
               {link.name}
-            </a>
+            </Link>
           ))}
-          {/* Static link for Blog to scroll to section if on home, or navigate home then scroll */}
-           <a 
-              href="#blog" 
-              onClick={(e) => handleNavigation(e, '#blog')}
+          {/* Link for Blog */}
+           <Link 
+              href="/#blog" 
+              onClick={(e) => handleLinkClick(e, '/#blog')}
               className="text-slate-700 hover:text-blue-700 font-bold text-sm tracking-wide transition-colors uppercase cursor-pointer"
             >
               Blog
-            </a>
+            </Link>
         </div>
 
         {/* CTA Button */}
@@ -169,13 +144,13 @@ const Navbar: React.FC<NavbarProps> = ({ onNavigate }) => {
       {/* Mobile Menu */}
       {mobileMenuOpen && (
         <div className="md:hidden absolute top-full left-0 w-full bg-white border-t border-slate-100 p-6 flex flex-col gap-4 shadow-2xl max-h-[80vh] overflow-y-auto">
-          <a 
+          <Link 
             href="/"
-            onClick={(e) => handleNavigation(e, '/')}
+            onClick={(e) => handleLinkClick(e, '/')}
             className="text-slate-800 text-lg font-bold py-3 border-b border-slate-100 hover:text-blue-700 cursor-pointer"
           >
             Início
-          </a>
+          </Link>
           
           <div className="py-2 border-b border-slate-100">
              <button 
@@ -188,28 +163,28 @@ const Navbar: React.FC<NavbarProps> = ({ onNavigate }) => {
              {productsDropdownOpen && (
                <div className="pl-4 mt-2 space-y-2">
                   {PRODUCT_CATEGORIES.map(cat => (
-                    <a 
+                    <Link 
                       key={cat.id} 
-                      href={`#${cat.id}`}
-                      onClick={(e) => handleNavigation(e, `#${cat.id}`)}
+                      href={`/#${cat.id}`}
+                      onClick={() => handleLinkClick()}
                       className="block text-slate-600 font-medium py-2"
                     >
                       {cat.title}
-                    </a>
+                    </Link>
                   ))}
                </div>
              )}
           </div>
 
           {NAV_LINKS.filter(l => l.name !== 'Início').map((link) => (
-            <a 
+            <Link 
               key={link.name} 
-              href={link.href}
-              onClick={(e) => handleNavigation(e, link.href)}
+              href={link.href.startsWith('#') ? `/${link.href}` : link.href}
+              onClick={() => handleLinkClick()}
               className="text-slate-800 text-lg font-bold py-3 border-b border-slate-100 hover:text-blue-700"
             >
               {link.name}
-            </a>
+            </Link>
           ))}
           
           <a 

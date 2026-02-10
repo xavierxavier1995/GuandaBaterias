@@ -12,8 +12,9 @@ export function generateStaticParams() {
   }));
 }
 
-export default function BlogPostPage({ params }: { params: { id: string } }) {
-  const post = BLOG_POSTS.find((p) => p.id.toString() === params.id);
+export default async function BlogPostPage({ params }: { params: Promise<{ id: string }> }) {
+  const { id } = await params;
+  const post = BLOG_POSTS.find((p) => p.id.toString() === id);
 
   if (!post) {
     notFound();

@@ -1,4 +1,5 @@
 import React from 'react';
+import Link from 'next/link';
 import { BLOG_POSTS } from '../constants';
 import { ArrowRight, Calendar, Eye } from 'lucide-react';
 
@@ -7,6 +8,13 @@ interface BlogSectionProps {
 }
 
 const BlogSection: React.FC<BlogSectionProps> = ({ onPostClick }) => {
+  const handleCardClick = (e: React.MouseEvent, post: typeof BLOG_POSTS[0]) => {
+    if (onPostClick) {
+      e.preventDefault();
+      onPostClick(post);
+    }
+  };
+
   return (
     <section id="blog" className="py-24 bg-white relative">
       {/* Decorative BG */}
@@ -28,15 +36,10 @@ const BlogSection: React.FC<BlogSectionProps> = ({ onPostClick }) => {
         {/* Blog Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {BLOG_POSTS.map((post) => (
-            <a 
+            <Link 
               key={post.id} 
               href={`/blog/${post.id}`}
-              onClick={(e) => {
-                if (onPostClick) {
-                  e.preventDefault();
-                  onPostClick(post);
-                }
-              }}
+              onClick={(e) => handleCardClick(e, post)}
               className="group bg-white rounded-2xl border border-slate-200 shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden flex flex-col hover:-translate-y-2 cursor-pointer"
             >
               <div className="h-48 overflow-hidden relative">
@@ -68,7 +71,7 @@ const BlogSection: React.FC<BlogSectionProps> = ({ onPostClick }) => {
                   </div>
                 </div>
               </div>
-            </a>
+            </Link>
           ))}
         </div>
       </div>

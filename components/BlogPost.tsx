@@ -1,6 +1,7 @@
 'use client';
 
-import React, { useEffect } from 'react';
+import React from 'react';
+import Link from 'next/link';
 import { ArrowLeft, Calendar, MessageCircle } from 'lucide-react';
 import { BLOG_POSTS, BUSINESS_INFO } from '../constants';
 
@@ -12,10 +13,19 @@ interface BlogPostProps {
 
 const BlogPost: React.FC<BlogPostProps> = ({ post, onBack, onNavigatePost }) => {
   
-  // Use metadata in page.tsx for SEO, this effect handles simple scroll reset if navigating between posts
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, [post]);
+  const handleBackClick = (e: React.MouseEvent) => {
+    if (onBack) {
+        e.preventDefault();
+        onBack();
+    }
+  };
+
+  const handleSidebarPostClick = (e: React.MouseEvent, relatedPost: typeof BLOG_POSTS[0]) => {
+    if (onNavigatePost) {
+        e.preventDefault();
+        onNavigatePost(relatedPost);
+    }
+  };
 
   // Helper to parse bold markdown and render content structure
   const renderContent = (content: string) => {
@@ -62,21 +72,16 @@ const BlogPost: React.FC<BlogPostProps> = ({ post, onBack, onNavigatePost }) => 
     <div className="bg-white min-h-screen pt-24 pb-12 animate-in fade-in duration-300">
        
        <div className="max-w-4xl mx-auto px-6">
-          <a 
+          <Link 
             href="/#blog"
-            onClick={(e) => {
-              if (onBack) {
-                e.preventDefault();
-                onBack();
-              }
-            }}
+            onClick={handleBackClick}
             className="group flex items-center gap-2 text-slate-500 hover:text-blue-700 font-bold mb-8 transition-colors"
           >
              <div className="w-8 h-8 rounded-full bg-slate-100 flex items-center justify-center group-hover:bg-blue-100 transition-colors">
                 <ArrowLeft size={16} />
              </div>
              Voltar para o Blog
-          </a>
+          </Link>
        </div>
 
        {/* Article Hero */}
@@ -135,15 +140,10 @@ const BlogPost: React.FC<BlogPostProps> = ({ post, onBack, onNavigatePost }) => 
                 <h4 className="font-bold text-slate-900 mb-6 uppercase tracking-wider text-sm border-b border-slate-200 pb-2">Outros Artigos</h4>
                 <div className="space-y-6">
                    {BLOG_POSTS.filter(p => p.id !== post.id).slice(0, 4).map(related => (
-                      <a 
+                      <Link 
                          key={related.id} 
                          href={`/blog/${related.id}`}
-                         onClick={(e) => {
-                           if (onNavigatePost) {
-                             e.preventDefault();
-                             onNavigatePost(related);
-                           }
-                         }}
+                         onClick={(e) => handleSidebarPostClick(e, related)}
                          className="group cursor-pointer flex gap-4 items-start"
                       >
                          <img 
@@ -159,7 +159,7 @@ const BlogPost: React.FC<BlogPostProps> = ({ post, onBack, onNavigatePost }) => 
                             </h5>
                             <span className="text-xs text-blue-500 font-medium group-hover:underline">Ler artigo</span>
                          </div>
-                      </a>
+                      </Link>
                    ))}
                 </div>
              </div>
