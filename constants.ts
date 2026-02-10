@@ -18,7 +18,7 @@ export const NAV_LINKS = [
   { name: 'Início', href: '/' },
   // 'Produtos' is handled specially in the Navbar component
   { name: 'Quem Somos', href: '#about-us' },
-  { name: 'Blog', href: '/blog/' }, // Updated to route style
+  { name: 'Blog', href: '#blog' }, // Updated to anchor for smooth scroll
   { name: 'Revendedor', href: '#reseller' },
   // Contato removed as requested
 ];

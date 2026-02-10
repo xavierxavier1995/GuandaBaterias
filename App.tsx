@@ -26,17 +26,23 @@ const App: React.FC = () => {
       }
     }
 
-    // Check if user navigated to /blog or /blog/ and scroll there automatically
-    // This handles the user request for /blog/ link while maintaining SPA context if not using real router
-    const path = window.location.pathname;
-    if (path === '/blog' || path === '/blog/') {
-        setTimeout(() => {
-            const blogSection = document.getElementById('blog');
-            if (blogSection) {
-                blogSection.scrollIntoView({ behavior: 'smooth' });
-            }
-        }, 500); // Small delay to ensure render
-    }
+    // Check if user navigated to /blog or #blog and scroll there automatically
+    // This handles both SPA routing simulation and anchor linking on load
+    const handleInitialScroll = () => {
+        const path = window.location.pathname;
+        const hash = window.location.hash;
+        
+        if (path === '/blog' || path === '/blog/' || hash === '#blog') {
+            setTimeout(() => {
+                const blogSection = document.getElementById('blog');
+                if (blogSection) {
+                    blogSection.scrollIntoView({ behavior: 'smooth' });
+                }
+            }, 600); // Slightly increased delay to ensure DOM is fully ready
+        }
+    };
+
+    handleInitialScroll();
 
   }, [currentView]);
 

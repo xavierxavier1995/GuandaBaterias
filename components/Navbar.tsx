@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Menu, X, BatteryCharging, ChevronDown } from 'lucide-react';
+import { Menu, X, BatteryCharging, ChevronDown, Loader2 } from 'lucide-react';
 import { NAV_LINKS, BUSINESS_INFO, PRODUCT_CATEGORIES } from '../constants';
 
 interface NavbarProps {
@@ -9,14 +9,13 @@ interface NavbarProps {
 const Navbar: React.FC<NavbarProps> = ({ onNavigate }) => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [productsDropdownOpen, setProductsDropdownOpen] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
 
   // Smooth scroll handler to prevent frame errors and ensure smooth navigation
   const handleScroll = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
     // If it's a direct link to /blog/ let it propagate normally (SPA or reload)
-    if (href === '/blog/' || href === '/blog') {
-        return; 
-    }
-
+    // Removed strict block for /blog to allow scrolling to #blog anchor
+    
     e.preventDefault();
     if (onNavigate) onNavigate(); // Reset to home view if on a blog post
     setMobileMenuOpen(false); // Close mobile menu if open
@@ -34,6 +33,20 @@ const Navbar: React.FC<NavbarProps> = ({ onNavigate }) => {
     } else {
       window.open(href, '_blank');
     }
+  };
+
+  const handleWhatsappClick = (e: React.MouseEvent<HTMLAnchorElement>, message: string) => {
+    e.preventDefault();
+    if (isLoading) return;
+
+    setIsLoading(true);
+    
+    // Simulate a small delay for the UX animation before opening
+    setTimeout(() => {
+        const url = `${BUSINESS_INFO.whatsappLink}&text=${encodeURIComponent(message)}`;
+        window.open(url, '_blank');
+        setIsLoading(false);
+    }, 1000);
   };
 
   return (
@@ -105,16 +118,21 @@ const Navbar: React.FC<NavbarProps> = ({ onNavigate }) => {
           ))}
         </div>
 
-        {/* CTA Button - Compact Size */}
+        {/* CTA Button - Compact Size with Loading Animation */}
         <div className="hidden md:flex items-center">
           <a 
-            href={`${BUSINESS_INFO.whatsappLink}&text=Olá, gostaria de pedir uma bateria!`}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="flex items-center gap-2 bg-blue-700 hover:bg-blue-800 text-white px-5 py-2.5 rounded-full shadow-lg hover:shadow-blue-700/30 transition-all group"
+            href="#"
+            onClick={(e) => handleWhatsappClick(e, "Olá, gostaria de pedir uma bateria!")}
+            className={`flex items-center gap-2 bg-blue-700 hover:bg-blue-800 text-white px-5 py-2.5 rounded-full shadow-lg hover:shadow-blue-700/30 transition-all group ${isLoading ? 'cursor-wait opacity-90' : ''}`}
           >
-            <BatteryCharging size={18} className="text-yellow-400 group-hover:animate-pulse" />
-            <span className="font-bold text-sm">PEDIR BATERIA</span>
+            {isLoading ? (
+                <Loader2 size={18} className="text-yellow-400 animate-spin" />
+            ) : (
+                <BatteryCharging size={18} className="text-yellow-400 group-hover:animate-pulse" />
+            )}
+            <span className="font-bold text-sm">
+                {isLoading ? 'INICIANDO...' : 'PEDIR BATERIA'}
+            </span>
           </a>
         </div>
 
@@ -175,12 +193,12 @@ const Navbar: React.FC<NavbarProps> = ({ onNavigate }) => {
             </a>
           ))}
           <a 
-             href={`${BUSINESS_INFO.whatsappLink}&text=Olá, gostaria de pedir uma bateria!`}
-             target="_blank"
-             rel="noopener noreferrer"
-             className="mt-4 bg-yellow-400 hover:bg-yellow-500 text-blue-900 font-bold py-4 rounded-xl text-center shadow-lg"
+             href="#"
+             onClick={(e) => handleWhatsappClick(e, "Olá, gostaria de pedir uma bateria!")}
+             className={`mt-4 bg-yellow-400 hover:bg-yellow-500 text-blue-900 font-bold py-4 rounded-xl text-center shadow-lg flex justify-center items-center gap-2 ${isLoading ? 'opacity-80' : ''}`}
           >
-            Pedir Bateria
+            {isLoading ? <Loader2 size={24} className="animate-spin" /> : null}
+            {isLoading ? 'Conectando...' : 'Pedir Bateria'}
           </a>
         </div>
       )}
