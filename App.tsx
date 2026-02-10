@@ -17,7 +17,6 @@ const App: React.FC = () => {
   const [currentView, setCurrentView] = useState<'home' | 'article'>('home');
   const [activePost, setActivePost] = useState<typeof BLOG_POSTS[0] | null>(null);
 
-  // SEO: Reset title when returning to home
   useEffect(() => {
     if (currentView === 'home') {
       document.title = "Guanda Baterias | Energia em Minutos - Bauru e Região";
@@ -26,6 +25,19 @@ const App: React.FC = () => {
         metaDesc.setAttribute('content', "Baterias automotivas, moto e estacionárias em Bauru. Entrega e instalação grátis em minutos. Revendedor oficial Heliar, Cral, Moura e mais.");
       }
     }
+
+    // Check if user navigated to /blog or /blog/ and scroll there automatically
+    // This handles the user request for /blog/ link while maintaining SPA context if not using real router
+    const path = window.location.pathname;
+    if (path === '/blog' || path === '/blog/') {
+        setTimeout(() => {
+            const blogSection = document.getElementById('blog');
+            if (blogSection) {
+                blogSection.scrollIntoView({ behavior: 'smooth' });
+            }
+        }, 500); // Small delay to ensure render
+    }
+
   }, [currentView]);
 
   const handlePostClick = (post: typeof BLOG_POSTS[0]) => {
@@ -36,7 +48,6 @@ const App: React.FC = () => {
   const handleBackToHome = () => {
     setCurrentView('home');
     setActivePost(null);
-    // Optional: scroll back to blog section?
     setTimeout(() => {
        const blogSection = document.getElementById('blog');
        if (blogSection) blogSection.scrollIntoView();

@@ -12,6 +12,11 @@ const Navbar: React.FC<NavbarProps> = ({ onNavigate }) => {
 
   // Smooth scroll handler to prevent frame errors and ensure smooth navigation
   const handleScroll = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+    // If it's a direct link to /blog/ let it propagate normally (SPA or reload)
+    if (href === '/blog/' || href === '/blog') {
+        return; 
+    }
+
     e.preventDefault();
     if (onNavigate) onNavigate(); // Reset to home view if on a blog post
     setMobileMenuOpen(false); // Close mobile menu if open
@@ -24,6 +29,8 @@ const Navbar: React.FC<NavbarProps> = ({ onNavigate }) => {
           element.scrollIntoView({ behavior: 'smooth' });
         }, 100);
       }
+    } else if (href === '/') {
+       window.scrollTo({ top: 0, behavior: 'smooth' });
     } else {
       window.open(href, '_blank');
     }
@@ -31,13 +38,13 @@ const Navbar: React.FC<NavbarProps> = ({ onNavigate }) => {
 
   return (
     <nav 
-      className="fixed top-0 w-full z-50 bg-white/95 backdrop-blur-md shadow-md py-4 transition-all duration-300"
+      className="fixed top-0 w-full z-50 bg-white/95 backdrop-blur-sm shadow-sm py-2 transition-all duration-300"
     >
       <div className="max-w-7xl mx-auto px-6 flex justify-between items-center">
         {/* Logo */}
         <a 
-          href="#hero" 
-          onClick={(e) => handleScroll(e, '#hero')}
+          href="/" 
+          onClick={(e) => handleScroll(e, '/')}
           className="flex items-center gap-2 group"
           aria-label="Voltar para página inicial"
         >
@@ -45,9 +52,9 @@ const Navbar: React.FC<NavbarProps> = ({ onNavigate }) => {
              <img 
               src="https://www.guandabaterias.com.br/wp-content/uploads/2019/10/cropped-logo-guanda-baterias-.png" 
               alt="Guanda Baterias Logo - Distribuidora de Baterias em Bauru" 
-              className="w-auto object-contain h-16 md:h-20"
-              width="250"
-              height="80"
+              className="w-auto object-contain h-12 md:h-14" // Reduced from h-16/20
+              width="180"
+              height="60"
              />
           </div>
         </a>
@@ -55,8 +62,8 @@ const Navbar: React.FC<NavbarProps> = ({ onNavigate }) => {
         {/* Desktop Nav */}
         <div className="hidden md:flex items-center gap-8">
           <a 
-            href="#hero" 
-            onClick={(e) => handleScroll(e, '#hero')}
+            href="/" 
+            onClick={(e) => handleScroll(e, '/')}
             className="text-slate-700 hover:text-blue-700 font-bold text-sm tracking-wide transition-colors uppercase"
           >
             Início
@@ -70,7 +77,7 @@ const Navbar: React.FC<NavbarProps> = ({ onNavigate }) => {
               Produtos
               <ChevronDown size={16} />
             </button>
-            <div className="absolute top-full left-1/2 -translate-x-1/2 pt-4 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform group-hover:translate-y-0 translate-y-2">
+            <div className="absolute top-full left-1/2 -translate-x-1/2 pt-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform group-hover:translate-y-0 translate-y-2">
               <div className="bg-white rounded-xl shadow-2xl border border-slate-100 p-2 w-64 overflow-hidden">
                 {PRODUCT_CATEGORIES.map((cat) => (
                   <a
@@ -98,16 +105,16 @@ const Navbar: React.FC<NavbarProps> = ({ onNavigate }) => {
           ))}
         </div>
 
-        {/* CTA Button - Increased Size */}
+        {/* CTA Button - Compact Size */}
         <div className="hidden md:flex items-center">
           <a 
             href={`${BUSINESS_INFO.whatsappLink}&text=Olá, gostaria de pedir uma bateria!`}
             target="_blank"
             rel="noopener noreferrer"
-            className="flex items-center gap-2 bg-blue-700 hover:bg-blue-800 text-white px-7 py-3.5 rounded-full shadow-lg hover:shadow-blue-700/30 transition-all group"
+            className="flex items-center gap-2 bg-blue-700 hover:bg-blue-800 text-white px-5 py-2.5 rounded-full shadow-lg hover:shadow-blue-700/30 transition-all group"
           >
-            <BatteryCharging size={22} className="text-yellow-400 group-hover:animate-pulse" />
-            <span className="font-bold text-base">PEDIR BATERIA</span>
+            <BatteryCharging size={18} className="text-yellow-400 group-hover:animate-pulse" />
+            <span className="font-bold text-sm">PEDIR BATERIA</span>
           </a>
         </div>
 
@@ -117,7 +124,7 @@ const Navbar: React.FC<NavbarProps> = ({ onNavigate }) => {
           onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
           aria-label="Abrir menu"
         >
-          {mobileMenuOpen ? <X size={28} /> : <Menu size={28} />}
+          {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
         </button>
       </div>
 
@@ -125,8 +132,8 @@ const Navbar: React.FC<NavbarProps> = ({ onNavigate }) => {
       {mobileMenuOpen && (
         <div className="md:hidden absolute top-full left-0 w-full bg-white border-t border-slate-100 p-6 flex flex-col gap-4 shadow-2xl max-h-[80vh] overflow-y-auto">
           <a 
-            href="#hero"
-            onClick={(e) => handleScroll(e, '#hero')}
+            href="/"
+            onClick={(e) => handleScroll(e, '/')}
             className="text-slate-800 text-lg font-bold py-3 border-b border-slate-100 hover:text-blue-700"
           >
             Início

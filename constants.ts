@@ -15,12 +15,12 @@ export const SOCIAL_LINKS = {
 };
 
 export const NAV_LINKS = [
-  { name: 'Início', href: '#hero' },
+  { name: 'Início', href: '/' },
   // 'Produtos' is handled specially in the Navbar component
   { name: 'Quem Somos', href: '#about-us' },
-  { name: 'Blog', href: '#blog' }, // Renamed from Dicas
+  { name: 'Blog', href: '/blog/' }, // Updated to route style
   { name: 'Revendedor', href: '#reseller' },
-  { name: 'Contato', href: '#footer' },
+  // Contato removed as requested
 ];
 
 export const PRODUCT_CATEGORIES = [

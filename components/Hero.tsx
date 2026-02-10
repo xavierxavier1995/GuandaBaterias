@@ -4,7 +4,8 @@ import { BUSINESS_INFO } from '../constants';
 
 const Hero: React.FC = () => {
   return (
-    <section id="hero" className="relative min-h-screen flex items-center justify-center overflow-hidden pt-32 pb-20 bg-white">
+    <section id="hero" className="relative h-[100dvh] flex flex-col justify-center overflow-hidden bg-white pt-20">
+      
       {/* Background Elements */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         {/* Grid Pattern */}
@@ -17,20 +18,29 @@ const Hero: React.FC = () => {
         <div className="absolute top-1/2 -right-24 -translate-y-1/2 w-[600px] h-[600px] bg-blue-100/50 rounded-full blur-[100px] -z-10 opacity-60"></div>
       </div>
 
-      <div className="relative z-10 max-w-7xl mx-auto px-6 w-full grid lg:grid-cols-2 gap-16 items-center">
+      <div className="relative z-10 max-w-7xl mx-auto px-6 w-full grid lg:grid-cols-2 gap-8 lg:gap-16 items-center h-full">
         {/* Content Column */}
-        <div className="space-y-8 text-center lg:text-left">
+        <div className="flex flex-col justify-center space-y-8 text-center lg:text-left h-full max-h-[800px]">
+          
           {/* Badge */}
-          <div className="inline-flex items-center gap-2 bg-slate-50 border border-slate-200 rounded-full px-3 py-1.5 shadow-sm">
-            <span className="w-2 h-2 rounded-full bg-green-500 animate-pulse"></span>
-            <span className="text-slate-600 text-[10px] md:text-xs font-bold tracking-widest uppercase">ENTREGA E INSTALAÇÃO GRÁTIS</span>
+          <div className="flex justify-center lg:justify-start">
+            <div className="inline-flex items-center gap-2 bg-slate-100 border border-slate-200 rounded-full px-4 py-1.5">
+                <span className="w-2 h-2 rounded-full bg-green-500 animate-pulse"></span>
+                <span className="text-slate-600 text-xs font-bold tracking-wide uppercase">ENTREGA E INSTALAÇÃO GRÁTIS</span>
+            </div>
           </div>
 
-          {/* Headline */}
-          <h1 className="text-6xl md:text-7xl lg:text-8xl font-archivo font-black text-slate-900 leading-[0.9] tracking-tighter">
-            NÃO FIQUE <br />
-            <span className="bg-blue-600 text-white px-4 pt-1 pb-2 inline-block mt-2">NA MÃO.</span>
-          </h1>
+          {/* Redesigned Headline - Boxed Style - Reduced Size by ~35% */}
+          <div className="relative">
+             <h1 className="flex flex-col items-center lg:items-start font-sans font-black tracking-tighter leading-none uppercase">
+                <span className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl text-slate-900 mb-2">
+                    NÃO FIQUE
+                </span>
+                <span className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl text-white bg-blue-600 px-3 pt-1 pb-2 shadow-sm inline-block">
+                    NA MÃO.
+                </span>
+             </h1>
+          </div>
 
           {/* Description */}
           <p className="text-slate-600 text-lg max-w-lg mx-auto lg:mx-0 leading-relaxed font-medium">
@@ -39,48 +49,45 @@ const Hero: React.FC = () => {
           </p>
 
           {/* Buttons */}
-          <div className="flex flex-col sm:flex-row items-center gap-4 justify-center lg:justify-start">
+          <div className="flex flex-col sm:flex-row items-center gap-4 justify-center lg:justify-start pt-2">
             <a 
               href={`${BUSINESS_INFO.whatsappLink}&text=Preciso%20de%20socorro%20agora!`}
               target="_blank"
               rel="noopener noreferrer"
-              className="w-full sm:w-auto px-8 py-4 bg-yellow-400 hover:bg-yellow-500 text-blue-950 font-bold rounded-lg transition-all shadow-lg hover:shadow-xl flex items-center justify-center gap-2 group"
+              className="w-full sm:w-auto px-8 py-4 bg-yellow-400 hover:bg-yellow-500 text-slate-900 font-bold rounded-lg transition-all shadow-lg hover:shadow-xl hover:-translate-y-0.5 flex items-center justify-center gap-2 group"
             >
               Pedir Socorro Agora
               <ArrowRight className="group-hover:translate-x-1 transition-transform" />
             </a>
             <a 
               href="#product-lines"
-              className="w-full sm:w-auto px-8 py-4 bg-white hover:bg-slate-50 text-slate-700 font-bold rounded-lg border border-slate-200 transition-all shadow-sm"
+              className="w-full sm:w-auto px-8 py-4 bg-white hover:bg-slate-50 text-slate-700 font-bold rounded-lg border border-slate-200 transition-all shadow-sm hover:border-blue-200"
             >
               Ver Linhas
             </a>
           </div>
           
-          {/* Divider */}
-          <div className="h-px bg-slate-200 w-full my-8"></div>
-
           {/* Stats Row */}
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-y-6 gap-x-4 text-left">
+          <div className="hidden md:grid grid-cols-4 gap-4 text-left pt-6 border-t border-slate-100 mt-4">
              <div className="text-center lg:text-left">
-                <p className="text-2xl font-archivo font-black text-blue-700">30+</p>
-                <p className="text-slate-500 text-[10px] font-bold uppercase mt-1 leading-tight">Anos de Mercado</p>
+                <p className="text-xl font-black text-blue-700">30+</p>
+                <p className="text-slate-500 text-[10px] font-bold uppercase mt-0.5 leading-tight">Anos de Mercado</p>
              </div>
              <div className="text-center lg:text-left">
                 <div className="flex justify-center lg:justify-start mb-1 text-blue-700">
-                    <Wrench size={20} />
+                    <Wrench size={18} />
                 </div>
                 <p className="text-slate-500 text-[10px] font-bold uppercase leading-tight">Instalação Grátis</p>
              </div>
              <div className="text-center lg:text-left">
                  <div className="flex justify-center lg:justify-start text-yellow-400 mb-1">
-                     {[1,2,3,4,5].map(i => <Star key={i} size={12} fill="currentColor" />)}
+                     {[1,2,3,4,5].map(i => <Star key={i} size={10} fill="currentColor" />)}
                  </div>
                  <p className="text-slate-500 text-[10px] font-bold uppercase leading-tight">518 Avaliações</p>
              </div>
              <div className="text-center lg:text-left">
                 <div className="flex justify-center lg:justify-start mb-1 text-blue-700">
-                    <CreditCard size={20} />
+                    <CreditCard size={18} />
                 </div>
                 <p className="text-slate-500 text-[10px] font-bold uppercase leading-tight">Em até 10x</p>
              </div>
@@ -88,7 +95,7 @@ const Hero: React.FC = () => {
         </div>
 
         {/* Visual Column - Pure Abstract Energy Composition */}
-        <div className="relative flex items-center justify-center mt-16 lg:mt-0 h-[500px] w-full max-w-[600px] mx-auto lg:mx-0">
+        <div className="relative hidden lg:flex items-center justify-center h-full w-full max-h-[600px] mx-auto lg:mx-0">
              
              {/* Dynamic Energy Background Glow */}
              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[140%] h-[140%] bg-gradient-to-tr from-blue-300/20 via-transparent to-yellow-200/20 rounded-full blur-[80px] -z-20 animate-pulse"></div>
