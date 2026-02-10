@@ -1,3 +1,5 @@
+'use client';
+
 import React from 'react';
 import { ArrowRight, Zap, Star, Wrench, CreditCard, BatteryCharging, CheckCircle2 } from 'lucide-react';
 import { BUSINESS_INFO } from '../constants';
@@ -30,8 +32,7 @@ const Hero: React.FC = () => {
             </div>
           </div>
 
-          {/* Redesigned Headline - Boxed Style - Reduced Size by ~35% 
-              Changed to DIV to be visually dominant but semantically secondary to the H1 below for better SEO keywords targeting */}
+          {/* Headline */}
           <div className="relative">
              <div role="heading" aria-level={2} className="flex flex-col items-center lg:items-start font-sans font-black tracking-tighter leading-none uppercase">
                 <span className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl text-slate-900 mb-2">
@@ -43,7 +44,7 @@ const Hero: React.FC = () => {
              </div>
           </div>
 
-          {/* Description - Promoted to H1 for SEO as requested */}
+          {/* Description */}
           <h1 className="text-slate-600 text-lg max-w-lg mx-auto lg:mx-0 leading-relaxed font-medium">
             A bateria arriou? A Guanda chega em minutos. 
             Energia premium com <span className="text-blue-700 font-bold">instalação grátis</span> e tecnologia de ponta para seu veículo.
@@ -95,7 +96,7 @@ const Hero: React.FC = () => {
           </div>
         </div>
 
-        {/* Visual Column - Enhanced with more elements/effects */}
+        {/* Visual Column */}
         <div className="relative hidden lg:flex items-center justify-center h-full w-full max-h-[600px] mx-auto lg:mx-0 perspective-1000">
              
              {/* Dynamic Energy Background Glow */}

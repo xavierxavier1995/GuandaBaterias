@@ -1,3 +1,5 @@
+'use client';
+
 import React, { useState } from 'react';
 import { PRODUCTS, BUSINESS_INFO } from '../constants';
 import { ShoppingCart, ChevronRight } from 'lucide-react';

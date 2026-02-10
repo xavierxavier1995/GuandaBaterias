@@ -1,27 +1,20 @@
+'use client';
+
 import React, { useEffect } from 'react';
-import { ArrowLeft, Calendar, MessageCircle, Share2 } from 'lucide-react';
+import { ArrowLeft, Calendar, MessageCircle } from 'lucide-react';
 import { BLOG_POSTS, BUSINESS_INFO } from '../constants';
 
 interface BlogPostProps {
   post: typeof BLOG_POSTS[0];
-  onBack: () => void;
-  onNavigatePost: (post: typeof BLOG_POSTS[0]) => void;
+  onBack?: () => void;
+  onNavigatePost?: (post: typeof BLOG_POSTS[0]) => void;
 }
 
 const BlogPost: React.FC<BlogPostProps> = ({ post, onBack, onNavigatePost }) => {
   
+  // Use metadata in page.tsx for SEO, this effect handles simple scroll reset if navigating between posts
   useEffect(() => {
-    // Scroll to top
     window.scrollTo(0, 0);
-
-    // Dynamic SEO
-    document.title = `${post.title} - Blog Guanda Baterias`;
-    const metaDesc = document.querySelector('meta[name="description"]');
-    if (metaDesc) {
-      metaDesc.setAttribute('content', post.excerpt || `Leia sobre ${post.title} no blog da Guanda Baterias.`);
-    }
-
-    // Cleanup handled by App.tsx
   }, [post]);
 
   // Helper to parse bold markdown and render content structure
@@ -30,7 +23,7 @@ const BlogPost: React.FC<BlogPostProps> = ({ post, onBack, onNavigatePost }) => 
       const cleanLine = paragraph.trim();
       if (!cleanLine) return null;
 
-      // Helper for inline bolding: replaces **text** with <strong>text</strong>
+      // Helper for inline bolding
       const parseBold = (text: string) => {
         return text.split(/(\*\*.*?\*\*)/g).map((part, i) => {
           if (part.startsWith('**') && part.endsWith('**')) {
@@ -40,8 +33,6 @@ const BlogPost: React.FC<BlogPostProps> = ({ post, onBack, onNavigatePost }) => 
         });
       };
 
-      // Header detection (Starts with **)
-      // Priority check: Headers starting with ** must be checked before lists starting with *
       if (cleanLine.startsWith('**')) {
          return (
             <h3 key={idx} className="text-2xl font-bold text-slate-900 mt-8 mb-4 border-l-4 border-yellow-400 pl-4">
@@ -50,7 +41,6 @@ const BlogPost: React.FC<BlogPostProps> = ({ post, onBack, onNavigatePost }) => 
          );
       }
       
-      // List Item detection (Starts with *)
       if (cleanLine.startsWith('*')) {
          return (
             <li key={idx} className="list-none ml-4 pl-4 relative mb-2 text-slate-700">
@@ -60,7 +50,6 @@ const BlogPost: React.FC<BlogPostProps> = ({ post, onBack, onNavigatePost }) => 
          );
       }
 
-      // Regular Paragraph
       return (
          <p key={idx} className="mb-4 leading-relaxed text-slate-700">
             {parseBold(cleanLine)}
@@ -73,15 +62,21 @@ const BlogPost: React.FC<BlogPostProps> = ({ post, onBack, onNavigatePost }) => 
     <div className="bg-white min-h-screen pt-24 pb-12 animate-in fade-in duration-300">
        
        <div className="max-w-4xl mx-auto px-6">
-          <button 
-            onClick={onBack}
+          <a 
+            href="/#blog"
+            onClick={(e) => {
+              if (onBack) {
+                e.preventDefault();
+                onBack();
+              }
+            }}
             className="group flex items-center gap-2 text-slate-500 hover:text-blue-700 font-bold mb-8 transition-colors"
           >
              <div className="w-8 h-8 rounded-full bg-slate-100 flex items-center justify-center group-hover:bg-blue-100 transition-colors">
                 <ArrowLeft size={16} />
              </div>
              Voltar para o Blog
-          </button>
+          </a>
        </div>
 
        {/* Article Hero */}
@@ -92,7 +87,6 @@ const BlogPost: React.FC<BlogPostProps> = ({ post, onBack, onNavigatePost }) => 
             className="w-full h-full object-cover"
             width="1200"
             height="500"
-            loading="eager"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-slate-900/80 to-transparent"></div>
           <div className="absolute bottom-0 left-0 w-full p-6 md:p-12 max-w-7xl mx-auto">
@@ -141,10 +135,16 @@ const BlogPost: React.FC<BlogPostProps> = ({ post, onBack, onNavigatePost }) => 
                 <h4 className="font-bold text-slate-900 mb-6 uppercase tracking-wider text-sm border-b border-slate-200 pb-2">Outros Artigos</h4>
                 <div className="space-y-6">
                    {BLOG_POSTS.filter(p => p.id !== post.id).slice(0, 4).map(related => (
-                      <div 
+                      <a 
                          key={related.id} 
+                         href={`/blog/${related.id}`}
+                         onClick={(e) => {
+                           if (onNavigatePost) {
+                             e.preventDefault();
+                             onNavigatePost(related);
+                           }
+                         }}
                          className="group cursor-pointer flex gap-4 items-start"
-                         onClick={() => onNavigatePost(related)}
                       >
                          <img 
                            src={related.image} 
@@ -152,7 +152,6 @@ const BlogPost: React.FC<BlogPostProps> = ({ post, onBack, onNavigatePost }) => 
                            className="w-20 h-20 rounded-lg object-cover shadow-sm group-hover:shadow-md transition-all"
                            width="80"
                            height="80"
-                           loading="lazy"
                          />
                          <div>
                             <h5 className="font-bold text-slate-800 text-sm leading-tight group-hover:text-blue-700 transition-colors mb-1 line-clamp-2">
@@ -160,7 +159,7 @@ const BlogPost: React.FC<BlogPostProps> = ({ post, onBack, onNavigatePost }) => 
                             </h5>
                             <span className="text-xs text-blue-500 font-medium group-hover:underline">Ler artigo</span>
                          </div>
-                      </div>
+                      </a>
                    ))}
                 </div>
              </div>

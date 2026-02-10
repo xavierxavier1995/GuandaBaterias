@@ -1,3 +1,5 @@
+'use client';
+
 import React, { useState } from 'react';
 import { Send, MessageCircle } from 'lucide-react';
 import { BUSINESS_INFO } from '../constants';

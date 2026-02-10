@@ -3,7 +3,7 @@ import { BLOG_POSTS } from '../constants';
 import { ArrowRight, Calendar, Eye } from 'lucide-react';
 
 interface BlogSectionProps {
-  onPostClick: (post: typeof BLOG_POSTS[0]) => void;
+  onPostClick?: (post: typeof BLOG_POSTS[0]) => void;
 }
 
 const BlogSection: React.FC<BlogSectionProps> = ({ onPostClick }) => {
@@ -28,10 +28,16 @@ const BlogSection: React.FC<BlogSectionProps> = ({ onPostClick }) => {
         {/* Blog Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {BLOG_POSTS.map((post) => (
-            <article 
+            <a 
               key={post.id} 
+              href={`/blog/${post.id}`}
+              onClick={(e) => {
+                if (onPostClick) {
+                  e.preventDefault();
+                  onPostClick(post);
+                }
+              }}
               className="group bg-white rounded-2xl border border-slate-200 shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden flex flex-col hover:-translate-y-2 cursor-pointer"
-              onClick={() => onPostClick(post)}
             >
               <div className="h-48 overflow-hidden relative">
                 <img 
@@ -62,7 +68,7 @@ const BlogSection: React.FC<BlogSectionProps> = ({ onPostClick }) => {
                   </div>
                 </div>
               </div>
-            </article>
+            </a>
           ))}
         </div>
       </div>
