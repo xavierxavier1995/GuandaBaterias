@@ -8,16 +8,24 @@ const FloatingMobileMenu: React.FC = () => {
   const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
+    let ticking = false;
+
     const handleScroll = () => {
-      // Show after scrolling past the hero section (approx 500px)
-      if (window.scrollY > 500) {
-        setIsVisible(true);
-      } else {
-        setIsVisible(false);
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          // Show after scrolling past the hero section (approx 500px)
+          if (window.scrollY > 500) {
+            setIsVisible(true);
+          } else {
+            setIsVisible(false);
+          }
+          ticking = false;
+        });
+        ticking = true;
       }
     };
 
-    window.addEventListener('scroll', handleScroll);
+    window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
@@ -30,7 +38,7 @@ const FloatingMobileMenu: React.FC = () => {
 
   return (
     <div 
-      className={`fixed bottom-0 left-0 w-full z-40 bg-white border-t border-slate-200 shadow-[0_-5px_20px_rgba(0,0,0,0.1)] px-4 py-3 md:hidden transition-transform duration-300 ease-in-out ${
+      className={`fixed bottom-0 left-0 w-full z-40 bg-white border-t border-slate-200 shadow-[0_-5px_20px_rgba(0,0,0,0.1)] px-4 py-3 md:hidden transition-transform duration-300 ease-in-out will-change-transform ${
         isVisible ? 'translate-y-0' : 'translate-y-full'
       }`}
     >

@@ -40,11 +40,19 @@ const AboutUs: React.FC = () => {
                   src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=800&auto=format&fit=crop" 
                   alt="Estrutura Moderna" 
                   className="rounded-2xl shadow-xl w-full h-64 object-cover transform translate-y-8"
+                  loading="lazy"
+                  width="400"
+                  height="300"
+                  decoding="async"
                 />
                 <img 
                   src="https://images.unsplash.com/photo-1556761175-5973dc0f32e7?q=80&w=800&auto=format&fit=crop" 
                   alt="Equipe Guanda" 
                   className="rounded-2xl shadow-xl w-full h-64 object-cover"
+                  loading="lazy"
+                  width="400"
+                  height="300"
+                  decoding="async"
                 />
              </div>
           </div>
@@ -115,6 +123,10 @@ const AboutUs: React.FC = () => {
                  src="https://www.guandabaterias.com.br/wp-content/uploads/2020/02/Regioes-guanda-768x469.jpg" 
                  alt="Mapa de atuação Guanda Baterias no estado de SP" 
                  className="w-full h-auto object-contain rounded-xl mx-auto hover:scale-[1.02] transition-transform duration-500"
+                 loading="lazy"
+                 width="768"
+                 height="469"
+                 decoding="async"
                />
                <div className="mt-8 grid grid-cols-2 md:grid-cols-4 gap-4 text-center">
                   {['Bauru', 'São José do Rio Preto', 'Araçatuba', 'Presidente Prudente', 'Marília', 'Araraquara', 'Itapeva'].map((city) => (

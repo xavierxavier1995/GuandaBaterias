@@ -6,22 +6,13 @@ import { usePathname } from 'next/navigation';
 import { Menu, X, BatteryCharging, ChevronDown, Loader2 } from 'lucide-react';
 import { NAV_LINKS, BUSINESS_INFO, PRODUCT_CATEGORIES } from '../constants';
 
-interface NavbarProps {
-  onNavigate?: () => void;
-}
-
-const Navbar: React.FC<NavbarProps> = ({ onNavigate }) => {
+const Navbar: React.FC = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [productsDropdownOpen, setProductsDropdownOpen] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const pathname = usePathname();
 
-  const handleLinkClick = (e?: React.MouseEvent, href?: string) => {
-    // If it's the home link and we have an onNavigate prop (SPA mode), call it.
-    if ((href === '/' || href === '/#') && onNavigate) {
-       e?.preventDefault();
-       onNavigate();
-    }
+  const handleLinkClick = () => {
     setMobileMenuOpen(false);
   };
 
@@ -46,7 +37,7 @@ const Navbar: React.FC<NavbarProps> = ({ onNavigate }) => {
         {/* Logo */}
         <Link 
           href="/" 
-          onClick={(e) => handleLinkClick(e, '/')}
+          onClick={handleLinkClick}
           className="flex items-center gap-2 group"
           aria-label="Voltar para página inicial"
         >
@@ -57,6 +48,8 @@ const Navbar: React.FC<NavbarProps> = ({ onNavigate }) => {
               className="w-auto object-contain h-12 md:h-14"
               width="180"
               height="60"
+              fetchPriority="high"
+              decoding="async"
              />
           </div>
         </Link>
@@ -65,7 +58,6 @@ const Navbar: React.FC<NavbarProps> = ({ onNavigate }) => {
         <div className="hidden md:flex items-center gap-8">
           <Link 
             href="/" 
-            onClick={(e) => handleLinkClick(e, '/')}
             className="text-slate-700 hover:text-blue-700 font-bold text-sm tracking-wide transition-colors uppercase"
           >
             Início
@@ -106,7 +98,6 @@ const Navbar: React.FC<NavbarProps> = ({ onNavigate }) => {
           {/* Link for Blog */}
            <Link 
               href="/#blog" 
-              onClick={(e) => handleLinkClick(e, '/#blog')}
               className="text-slate-700 hover:text-blue-700 font-bold text-sm tracking-wide transition-colors uppercase cursor-pointer"
             >
               Blog
@@ -146,7 +137,7 @@ const Navbar: React.FC<NavbarProps> = ({ onNavigate }) => {
         <div className="md:hidden absolute top-full left-0 w-full bg-white border-t border-slate-100 p-6 flex flex-col gap-4 shadow-2xl max-h-[80vh] overflow-y-auto">
           <Link 
             href="/"
-            onClick={(e) => handleLinkClick(e, '/')}
+            onClick={handleLinkClick}
             className="text-slate-800 text-lg font-bold py-3 border-b border-slate-100 hover:text-blue-700 cursor-pointer"
           >
             Início
@@ -166,7 +157,7 @@ const Navbar: React.FC<NavbarProps> = ({ onNavigate }) => {
                     <Link 
                       key={cat.id} 
                       href={`/#${cat.id}`}
-                      onClick={() => handleLinkClick()}
+                      onClick={handleLinkClick}
                       className="block text-slate-600 font-medium py-2"
                     >
                       {cat.title}
@@ -180,7 +171,7 @@ const Navbar: React.FC<NavbarProps> = ({ onNavigate }) => {
             <Link 
               key={link.name} 
               href={link.href.startsWith('#') ? `/${link.href}` : link.href}
-              onClick={() => handleLinkClick()}
+              onClick={handleLinkClick}
               className="text-slate-800 text-lg font-bold py-3 border-b border-slate-100 hover:text-blue-700"
             >
               {link.name}

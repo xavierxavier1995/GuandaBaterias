@@ -1,5 +1,6 @@
 import Navbar from '../components/Navbar';
 import Hero from '../components/Hero';
+import MarqueeBanner from '../components/MarqueeBanner';
 import ProductShowcase from '../components/ProductShowcase';
 import ResellerAndProducts from '../components/ResellerAndProducts';
 import AboutUs from '../components/AboutUs';
@@ -15,6 +16,7 @@ export default function Home() {
     <main className="min-h-screen">
       <Navbar />
       <Hero />
+      <MarqueeBanner />
       <ProductShowcase />
       <ResellerAndProducts />
       <AboutUs />

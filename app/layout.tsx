@@ -1,3 +1,4 @@
+import React from 'react';
 import { Archivo, Inter } from 'next/font/google';
 import './globals.css';
 

@@ -3,18 +3,7 @@ import Link from 'next/link';
 import { BLOG_POSTS } from '../constants';
 import { ArrowRight, Calendar, Eye } from 'lucide-react';
 
-interface BlogSectionProps {
-  onPostClick?: (post: typeof BLOG_POSTS[0]) => void;
-}
-
-const BlogSection: React.FC<BlogSectionProps> = ({ onPostClick }) => {
-  const handleCardClick = (e: React.MouseEvent, post: typeof BLOG_POSTS[0]) => {
-    if (onPostClick) {
-      e.preventDefault();
-      onPostClick(post);
-    }
-  };
-
+const BlogSection: React.FC = () => {
   return (
     <section id="blog" className="py-24 bg-white relative">
       {/* Decorative BG */}
@@ -39,7 +28,6 @@ const BlogSection: React.FC<BlogSectionProps> = ({ onPostClick }) => {
             <Link 
               key={post.id} 
               href={`/blog/${post.id}`}
-              onClick={(e) => handleCardClick(e, post)}
               className="group bg-white rounded-2xl border border-slate-200 shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden flex flex-col hover:-translate-y-2 cursor-pointer"
             >
               <div className="h-48 overflow-hidden relative">
@@ -47,6 +35,10 @@ const BlogSection: React.FC<BlogSectionProps> = ({ onPostClick }) => {
                   src={post.image} 
                   alt={post.title} 
                   className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                  loading="lazy"
+                  width="600"
+                  height="400"
+                  decoding="async"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-slate-900/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
                    <span className="text-white text-sm font-bold flex items-center gap-2">

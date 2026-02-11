@@ -17,6 +17,8 @@ const Footer: React.FC = () => {
                       className="h-10 w-auto object-contain"
                       width="150"
                       height="40"
+                      loading="lazy"
+                      decoding="async"
                     />
                  </div>
               </div>

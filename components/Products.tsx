@@ -57,6 +57,10 @@ const Products: React.FC = () => {
                     src={product.image} 
                     alt={product.name}
                     className="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity duration-300 group-hover:scale-110"
+                    loading="lazy"
+                    width="400"
+                    height="300"
+                    decoding="async"
                    />
                    <div className="absolute inset-0 bg-gradient-to-t from-slate-900 to-transparent"></div>
                 </div>
