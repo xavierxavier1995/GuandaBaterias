@@ -27,7 +27,7 @@ const BlogSection: React.FC = () => {
           {BLOG_POSTS.map((post) => (
             <Link 
               key={post.id} 
-              href={`/blog/${post.id}`}
+              href={`/${post.slug}`}
               className="group bg-white rounded-2xl border border-slate-200 shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden flex flex-col hover:-translate-y-2 cursor-pointer"
             >
               <div className="h-48 overflow-hidden relative">

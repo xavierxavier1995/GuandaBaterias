@@ -1,13 +1,40 @@
 'use client';
 
-import React from 'react';
-import { ArrowRight, Zap, Star, Wrench, CreditCard, BatteryCharging, CheckCircle2 } from 'lucide-react';
+import React, { useState, useEffect } from 'react';
+import { ArrowRight, Zap, Star, Wrench, CreditCard, BatteryCharging, CheckCircle2, Loader2 } from 'lucide-react';
 import { BUSINESS_INFO } from '../constants';
 
 const Hero: React.FC = () => {
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    // Simulate a brief stabilization period to ensure fonts/styles are ready
+    // and provide a smooth visual transition.
+    const timer = setTimeout(() => {
+      setIsLoading(false);
+    }, 600);
+
+    return () => clearTimeout(timer);
+  }, []);
+
   return (
     <section id="hero" className="relative min-h-[100dvh] flex flex-col justify-center overflow-hidden bg-white pt-24 pb-12 lg:py-0">
       
+      {/* Loading Overlay */}
+      <div 
+        className={`absolute inset-0 z-50 flex flex-col items-center justify-center bg-white transition-opacity duration-700 ease-in-out ${
+          isLoading ? 'opacity-100' : 'opacity-0 pointer-events-none'
+        }`}
+      >
+        <div className="relative">
+          <div className="absolute inset-0 bg-blue-100 rounded-full blur-xl opacity-50 animate-pulse"></div>
+          <Loader2 className="relative z-10 w-12 h-12 text-blue-700 animate-spin" />
+        </div>
+        <p className="mt-4 text-xs font-bold tracking-[0.2em] text-blue-900 uppercase animate-pulse">
+          Carregando
+        </p>
+      </div>
+
       {/* Background Elements (Mobile & Desktop) */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         {/* Grid Pattern */}
@@ -23,7 +50,7 @@ const Hero: React.FC = () => {
       <div className="relative z-10 max-w-7xl mx-auto px-6 w-full grid lg:grid-cols-2 gap-8 lg:gap-16 items-center h-full">
         
         {/* Content Column */}
-        <div className="flex flex-col justify-center space-y-6 lg:space-y-8 text-center lg:text-left h-full z-20">
+        <div className={`flex flex-col justify-center space-y-6 lg:space-y-8 text-center lg:text-left h-full z-20 transition-all duration-1000 ${isLoading ? 'translate-y-4 opacity-0' : 'translate-y-0 opacity-100'}`}>
           
           {/* Badge */}
           <div className="flex justify-center lg:justify-start">
@@ -98,7 +125,7 @@ const Hero: React.FC = () => {
         </div>
 
         {/* Visual Column - Now visible on mobile as background watermark */}
-        <div className="absolute inset-0 lg:static lg:flex items-center justify-center h-full w-full max-h-[600px] mx-auto lg:mx-0 perspective-1000 overflow-hidden lg:overflow-visible z-0 pointer-events-none lg:pointer-events-auto opacity-30 lg:opacity-100">
+        <div className={`absolute inset-0 lg:static lg:flex items-center justify-center h-full w-full max-h-[600px] mx-auto lg:mx-0 perspective-1000 overflow-hidden lg:overflow-visible z-0 pointer-events-none lg:pointer-events-auto opacity-30 lg:opacity-100 transition-all duration-1000 delay-100 ${isLoading ? 'scale-95 opacity-0' : 'scale-100 lg:opacity-100'}`}>
              
              {/* Dynamic Energy Background Glow */}
              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[160%] h-[160%] bg-gradient-to-tr from-blue-400/20 via-transparent to-yellow-300/20 rounded-full blur-[100px] -z-20 animate-pulse will-change-transform"></div>

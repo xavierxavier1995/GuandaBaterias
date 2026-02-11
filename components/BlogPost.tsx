@@ -268,7 +268,7 @@ const BlogPost: React.FC<BlogPostProps> = ({ post }) => {
                    {BLOG_POSTS.filter(p => p.id !== post.id).slice(0, 3).map(related => (
                       <Link 
                          key={related.id} 
-                         href={`/blog/${related.id}`}
+                         href={`/${related.slug}`}
                          className="group flex gap-4 items-start"
                       >
                          <div className="shrink-0 overflow-hidden rounded-lg w-24 h-24">

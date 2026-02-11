@@ -155,7 +155,10 @@ export const FEATURES = [
 export const BLOG_POSTS = [
   {
     id: 1,
+    slug: "como-agir-em-caso-superaquecimento-motor",
     title: "Como agir em caso superaquecimento do motor?",
+    metaTitle: "Superaquecimento do Motor: O que fazer? | Guanda Baterias",
+    metaDescription: "Saiba como agir em caso de superaquecimento do motor, identificar sinais e prevenir problemas com a correia, radiador e bateria.",
     image: "https://www.guandabaterias.com.br/wp-content/uploads/2020/08/superaquecimento-motor.jpg",
     excerpt: "Um dos piores problemas mecânicos que pode acontecer com o seu carro é o superaquecimento do motor. Saiba como agir.",
     content: `
@@ -188,7 +191,10 @@ export const BLOG_POSTS = [
   },
   {
     id: 2,
+    slug: "como-fazer-checagem-rapida-no-carro",
     title: "Como fazer checagem rápida no carro?",
+    metaTitle: "Checklist: Checagem Rápida no Carro | Guanda Baterias",
+    metaDescription: "Vai viajar? Aprenda a fazer uma checagem rápida de óleo, água, pneus e luzes do seu carro em casa antes de sair.",
     image: "https://www.guandabaterias.com.br/wp-content/uploads/2020/08/checagem-carro.jpg",
     excerpt: "Vai viajar ou sair de casa? Confira o checklist rápido para garantir a saúde do seu veículo.",
     content: `
@@ -217,7 +223,10 @@ export const BLOG_POSTS = [
   },
   {
     id: 3,
+    slug: "durabilidade-de-uma-bateria",
     title: "Durabilidade de uma bateria",
+    metaTitle: "Qual a Durabilidade de uma Bateria? | Guanda Baterias",
+    metaDescription: "Descubra quanto tempo dura a bateria de um carro, o que afeta sua vida útil e dicas para fazê-la durar mais.",
     image: "https://www.guandabaterias.com.br/wp-content/uploads/2020/08/durabilidade-bateria.jpg",
     excerpt: "Você sabe quanto tempo dura uma bateria e o que afeta sua vida útil? Descubra agora.",
     content: `
@@ -240,7 +249,10 @@ export const BLOG_POSTS = [
   },
   {
     id: 4,
+    slug: "o-que-e-zinabre",
     title: "O que é Zinabre?",
+    metaTitle: "O que é Zinabre na Bateria? | Guanda Baterias",
+    metaDescription: "Entenda o que é o zinabre (a crosta verde na bateria), os riscos para o sistema elétrico e aprenda como removê-lo em casa.",
     image: "https://www.guandabaterias.com.br/wp-content/uploads/2020/05/bx_shutterstock_1078231586.jpg",
     excerpt: "Aquela crosta verde na bateria pode ser perigosa. Entenda o que é o 'câncer do carro' e como remover.",
     content: `
@@ -265,7 +277,10 @@ export const BLOG_POSTS = [
   },
   {
     id: 5,
+    slug: "o-que-e-amperagem-de-bateria",
     title: "O que é amperagem de bateria?",
+    metaTitle: "O que é Amperagem de Bateria? | Guanda Baterias",
+    metaDescription: "Entenda a importância da amperagem da bateria automotiva e como escolher a correta para evitar panes elétricas no seu veículo.",
     image: "https://www.guandabaterias.com.br/wp-content/uploads/2020/05/Cargar-bater%C3%ADa-coche.jpg",
     excerpt: "Entender a amperagem correta evita panes elétricas e garante o funcionamento do som e ar-condicionado.",
     content: `
@@ -289,7 +304,10 @@ export const BLOG_POSTS = [
   },
   {
     id: 6,
+    slug: "como-fazer-o-descarte-correto-da-sua-bateria",
     title: "Como fazer o descarte correto da bateria?",
+    metaTitle: "Descarte Correto de Baterias | Guanda Baterias",
+    metaDescription: "Saiba onde e como descartar sua bateria usada corretamente em Bauru. Cumprimos a legislação ambiental e garantimos a reciclagem.",
     image: "https://www.guandabaterias.com.br/wp-content/uploads/2019/11/Hora-de-realizar-a-troca-da-bateria.jpg",
     excerpt: "Baterias contêm chumbo e ácido. Saiba como descartar sem agredir o meio ambiente e cumprir a lei.",
     content: `
