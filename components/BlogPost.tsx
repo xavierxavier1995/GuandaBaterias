@@ -167,6 +167,12 @@ const BlogPost: React.FC<BlogPostProps> = ({ post }) => {
           {/* Main Content */}
           <div className="lg:col-span-8">
              <div className="bg-white rounded-3xl p-6 md:p-10 shadow-sm border border-slate-100">
+                
+                {/* Secondary H2 Title as requested */}
+                <h2 className="text-3xl md:text-4xl font-archivo font-bold text-slate-900 mb-8 leading-tight">
+                    {post.title}
+                </h2>
+
                 {/* Mobile ToC (Visible on small screens) */}
                 {tableOfContents.length > 0 && (
                   <div className="lg:hidden mb-10 border border-slate-200 rounded-2xl overflow-hidden bg-slate-50">

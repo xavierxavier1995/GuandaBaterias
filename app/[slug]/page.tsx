@@ -1,10 +1,10 @@
 import React from 'react';
 import { notFound } from 'next/navigation';
-import { BLOG_POSTS } from '../constants';
-import BlogPost from '../components/BlogPost';
-import Navbar from '../components/Navbar';
-import Footer from '../components/Footer';
-import FloatingWhatsApp from '../components/FloatingWhatsApp';
+import { BLOG_POSTS } from '../../constants';
+import BlogPost from '../../components/BlogPost';
+import Navbar from '../../components/Navbar';
+import Footer from '../../components/Footer';
+import FloatingWhatsApp from '../../components/FloatingWhatsApp';
 
 // Gera os parâmetros estáticos para todas as slugs conhecidas
 export async function generateStaticParams() {
