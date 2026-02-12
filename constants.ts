@@ -1,3 +1,4 @@
+import React from 'react';
 import { Battery, Zap, Clock, ShieldCheck, MapPin, Phone } from 'lucide-react';
 
 // Fix for missing JSX.IntrinsicElements definitions in the environment
@@ -5,6 +6,41 @@ declare global {
   namespace JSX {
     interface IntrinsicElements {
       [elemName: string]: any;
+      div: any;
+      section: any;
+      nav: any;
+      footer: any;
+      header: any;
+      main: any;
+      a: any;
+      img: any;
+      span: any;
+      p: any;
+      h1: any;
+      h2: any;
+      h3: any;
+      h4: any;
+      h5: any;
+      h6: any;
+      ul: any;
+      li: any;
+      button: any;
+      input: any;
+      textarea: any;
+      form: any;
+      option: any;
+      select: any;
+      label: any;
+      iframe: any;
+      svg: any;
+      path: any;
+      defs: any;
+      linearGradient: any;
+      stop: any;
+      style: any;
+      body: any;
+      html: any;
+      strong: any;
     }
   }
 }

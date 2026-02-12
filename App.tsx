@@ -11,6 +11,7 @@ import LocationMap from './components/LocationMap';
 import Footer from './components/Footer';
 import FloatingWhatsApp from './components/FloatingWhatsApp';
 import FloatingMobileMenu from './components/FloatingMobileMenu';
+import './constants';
 
 const App: React.FC = () => {
   useEffect(() => {

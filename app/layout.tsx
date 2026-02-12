@@ -1,6 +1,7 @@
 import React from 'react';
 import { Archivo, Inter } from 'next/font/google';
 import './globals.css';
+import '../constants';
 
 const archivo = Archivo({ subsets: ['latin'], variable: '--font-archivo' });
 const inter = Inter({ subsets: ['latin'], variable: '--font-inter' });
