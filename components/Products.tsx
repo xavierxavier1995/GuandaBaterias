@@ -1,11 +1,11 @@
 'use client';
 
-import React, { useState } from 'react';
+import * as React from 'react';
 import { PRODUCTS, BUSINESS_INFO } from '../constants';
 import { ShoppingCart, ChevronRight } from 'lucide-react';
 
 const Products: React.FC = () => {
-  const [activeCategory, setActiveCategory] = useState("Todas");
+  const [activeCategory, setActiveCategory] = React.useState("Todas");
   const categories = ["Todas", "Automotiva", "Moto", "Pesada", "Som"];
 
   const filteredProducts = activeCategory === "Todas" 

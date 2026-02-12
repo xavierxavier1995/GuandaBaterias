@@ -4,6 +4,7 @@ const nextConfig = {
   images: {
     remotePatterns: [
       { protocol: 'https', hostname: 'www.guandabaterias.com.br' },
+      { protocol: 'https', hostname: 'cdn.gabrielxavier.online' },
       { protocol: 'https', hostname: 'images.unsplash.com' },
       { protocol: 'https', hostname: 'picsum.photos' },
       { protocol: 'https', hostname: 'instagram.fbau6-1.fna.fbcdn.net' }
@@ -28,7 +29,7 @@ const nextConfig = {
           },
           {
             key: 'Content-Security-Policy',
-            value: "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://cdn.tailwindcss.com https://esm.sh; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; img-src 'self' data: https://www.guandabaterias.com.br https://images.unsplash.com https://picsum.photos https://instagram.fbau6-1.fna.fbcdn.net https://*.google.com; font-src 'self' https://fonts.gstatic.com; connect-src 'self' https://generativelanguage.googleapis.com; frame-src 'self' https://www.google.com;",
+            value: "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://cdn.tailwindcss.com https://esm.sh; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; img-src 'self' data: https://www.guandabaterias.com.br https://cdn.gabrielxavier.online https://images.unsplash.com https://picsum.photos https://instagram.fbau6-1.fna.fbcdn.net https://*.google.com; font-src 'self' https://fonts.gstatic.com; connect-src 'self' https://generativelanguage.googleapis.com; frame-src 'self' https://www.google.com https://forms.lahar.com.br;",
           },
         ],
       },

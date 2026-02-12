@@ -16,7 +16,8 @@ export async function generateStaticParams() {
 // Gera metadados dinâmicos para SEO
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
-  const post = BLOG_POSTS.find((p) => p.slug === slug);
+  const decodedSlug = decodeURIComponent(slug);
+  const post = BLOG_POSTS.find((p) => p.slug === decodedSlug);
 
   if (!post) {
     return {
@@ -40,7 +41,8 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
 // Componente da página
 export default async function BlogPostPage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
-  const post = BLOG_POSTS.find((p) => p.slug === slug);
+  const decodedSlug = decodeURIComponent(slug);
+  const post = BLOG_POSTS.find((p) => p.slug === decodedSlug);
 
   if (!post) {
     notFound();

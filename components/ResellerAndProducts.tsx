@@ -141,7 +141,7 @@ const ResellerAndProducts: React.FC = () => {
         {/* Benefits Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-20">
            {benefits.map((item, idx) => (
-             <div key={idx} className="bg-white hover:bg-slate-50 p-6 rounded-xl border border-slate-200 shadow-lg hover:shadow-xl transition-all hover:-translate-y-1 group">
+             <div key={idx} className="bg-white hover:bg-slate-50 p-6 rounded-t-3xl rounded-b-none border border-slate-200 shadow-lg hover:shadow-xl transition-all hover:-translate-y-1 group">
                 <div className="w-12 h-12 bg-blue-50 rounded-lg flex items-center justify-center text-blue-600 mb-4 group-hover:bg-blue-600 group-hover:text-white transition-colors">
                    <item.icon size={24} />
                 </div>
@@ -153,69 +153,21 @@ const ResellerAndProducts: React.FC = () => {
 
         {/* Form Container */}
         <div className="flex justify-center">
-           <div className="w-full max-w-lg bg-white rounded-2xl p-8 shadow-2xl border border-slate-100 relative overflow-hidden">
+           <div className="w-full max-w-2xl bg-white rounded-2xl p-4 md:p-8 shadow-2xl border border-slate-100 relative overflow-hidden">
               <div className="absolute top-0 left-0 w-full h-2 bg-gradient-to-r from-blue-600 to-blue-400"></div>
               
-              <div className="text-center mb-8">
-                 <h3 className="text-2xl font-bold text-slate-900 uppercase tracking-wide">Seja um Revendedor</h3>
-                 <p className="text-slate-500 text-sm mt-2">
-                   Preencha o formulário e um de nossos consultores entrará em contato
-                 </p>
-              </div>
-
-              <form className="space-y-4" onSubmit={(e) => e.preventDefault()}>
-                 {/* Nome */}
-                 <div>
-                    <input 
-                      type="text" 
-                      placeholder="Nome *" 
-                      className="w-full bg-slate-50 border border-slate-200 rounded px-4 py-3 text-slate-800 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all"
-                    />
-                 </div>
-
-                 {/* Email */}
-                 <div>
-                    <input 
-                      type="email" 
-                      placeholder="Email *" 
-                      className="w-full bg-slate-50 border border-slate-200 rounded px-4 py-3 text-slate-800 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all"
-                    />
-                 </div>
-
-                 {/* Telefone */}
-                 <div>
-                    <input 
-                      type="tel" 
-                      placeholder="Telefone *" 
-                      className="w-full bg-slate-50 border border-slate-200 rounded px-4 py-3 text-slate-800 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all"
-                    />
-                 </div>
-
-                 {/* Cidade */}
-                 <div>
-                    <input 
-                      type="text" 
-                      placeholder="Cidade *" 
-                      className="w-full bg-slate-50 border border-slate-200 rounded px-4 py-3 text-slate-800 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all"
-                    />
-                 </div>
-
-                 {/* Mensagem */}
-                 <div>
-                    <textarea 
-                      placeholder="Mensagem" 
-                      rows={4}
-                      className="w-full bg-slate-50 border border-slate-200 rounded px-4 py-3 text-slate-800 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-500 resize-none transition-all"
-                    ></textarea>
-                 </div>
-
-                 {/* Submit Button */}
-                 <div className="pt-2">
-                    <button className="w-full bg-blue-700 hover:bg-blue-800 text-white font-bold py-4 rounded-lg uppercase tracking-wider transition-all shadow-lg hover:shadow-blue-700/30">
-                       ENVIAR SOLICITAÇÃO
-                    </button>
-                 </div>
-              </form>
+              {/* Lahar Iframe */}
+              <iframe 
+                title="Formex Formulário Site - contato" 
+                name="iframe_formex_lahar" 
+                width="100%" 
+                height="660px" 
+                style={{ background: 'none', border: 'none' }} 
+                allowTransparency={true} 
+                src="https://forms.lahar.com.br/formularios-externos/acessa/formulariodecontatohome-hzsLrktW1fatXO9B4v83LjsarF"
+              >
+                Seu navegador não possui suporte para iframes.
+              </iframe>
            </div>
         </div>
 

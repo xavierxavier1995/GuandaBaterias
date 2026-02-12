@@ -1,15 +1,15 @@
 'use client';
 
-import React, { useState } from 'react';
+import * as React from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { Menu, X, BatteryCharging, ChevronDown, Loader2 } from 'lucide-react';
 import { NAV_LINKS, BUSINESS_INFO, PRODUCT_CATEGORIES } from '../constants';
 
 const Navbar: React.FC = () => {
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [productsDropdownOpen, setProductsDropdownOpen] = useState(false);
-  const [isLoading, setIsLoading] = useState(false);
+  const [mobileMenuOpen, setMobileMenuOpen] = React.useState(false);
+  const [productsDropdownOpen, setProductsDropdownOpen] = React.useState(false);
+  const [isLoading, setIsLoading] = React.useState(false);
   const pathname = usePathname();
 
   const handleLinkClick = () => {
@@ -43,7 +43,7 @@ const Navbar: React.FC = () => {
         >
           <div className="relative transition-transform group-hover:scale-105">
              <img 
-              src="https://www.guandabaterias.com.br/wp-content/uploads/2019/10/cropped-logo-guanda-baterias-.png" 
+              src="https://cdn.gabrielxavier.online/logo-guanda-transparente-neutro.webp" 
               alt="Guanda Baterias Logo - Distribuidora de Baterias em Bauru" 
               className="w-auto object-contain h-12 md:h-14"
               width="180"
@@ -76,7 +76,7 @@ const Navbar: React.FC = () => {
                 {PRODUCT_CATEGORIES.map((cat) => (
                   <Link
                     key={cat.id}
-                    href={`/#${cat.id}`}
+                    href={`/${cat.slug}`}
                     className="block px-4 py-3 text-slate-700 hover:bg-blue-50 hover:text-blue-700 rounded-lg text-sm font-bold transition-colors cursor-pointer"
                   >
                     {cat.title}
@@ -89,7 +89,7 @@ const Navbar: React.FC = () => {
           {NAV_LINKS.filter(l => l.name !== 'Início' && l.name !== 'Blog').map((link) => (
             <Link 
               key={link.name} 
-              href={link.href.startsWith('#') ? `/${link.href}` : link.href} 
+              href={link.href}
               className="text-slate-700 hover:text-blue-700 font-bold text-sm tracking-wide transition-colors uppercase cursor-pointer"
             >
               {link.name}
@@ -156,7 +156,7 @@ const Navbar: React.FC = () => {
                   {PRODUCT_CATEGORIES.map(cat => (
                     <Link 
                       key={cat.id} 
-                      href={`/#${cat.id}`}
+                      href={`/${cat.slug}`}
                       onClick={handleLinkClick}
                       className="block text-slate-600 font-medium py-2"
                     >
@@ -170,7 +170,7 @@ const Navbar: React.FC = () => {
           {NAV_LINKS.filter(l => l.name !== 'Início').map((link) => (
             <Link 
               key={link.name} 
-              href={link.href.startsWith('#') ? `/${link.href}` : link.href}
+              href={link.href}
               onClick={handleLinkClick}
               className="text-slate-800 text-lg font-bold py-3 border-b border-slate-100 hover:text-blue-700"
             >

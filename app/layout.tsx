@@ -15,7 +15,7 @@ export const metadata = {
     url: 'https://www.guandabaterias.com.br/',
     title: 'Guanda Baterias | Energia em Minutos',
     description: 'Baterias automotivas com entrega e instalação grátis em Bauru.',
-    images: ['https://www.guandabaterias.com.br/wp-content/uploads/2019/09/baterias-automotivas.png'],
+    images: ['https://cdn.gabrielxavier.online/baterias-para-carro.webp'],
   },
 };
 

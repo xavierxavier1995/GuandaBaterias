@@ -1,13 +1,13 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import * as React from 'react';
 import { ArrowRight, Zap, Star, Wrench, CreditCard, BatteryCharging, CheckCircle2, Loader2 } from 'lucide-react';
 import { BUSINESS_INFO } from '../constants';
 
 const Hero: React.FC = () => {
-  const [isLoading, setIsLoading] = useState(true);
+  const [isLoading, setIsLoading] = React.useState(true);
 
-  useEffect(() => {
+  React.useEffect(() => {
     // Simulate a brief stabilization period to ensure fonts/styles are ready
     // and provide a smooth visual transition.
     const timer = setTimeout(() => {

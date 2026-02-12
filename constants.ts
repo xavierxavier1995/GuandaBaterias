@@ -1,5 +1,14 @@
 import { Battery, Zap, Clock, ShieldCheck, MapPin, Phone } from 'lucide-react';
 
+// Fix for missing JSX.IntrinsicElements definitions in the environment
+declare global {
+  namespace JSX {
+    interface IntrinsicElements {
+      [elemName: string]: any;
+    }
+  }
+}
+
 export const BUSINESS_INFO = {
   name: "Guanda Baterias",
   phone: "14 3103-0303",
@@ -17,35 +26,38 @@ export const SOCIAL_LINKS = {
 export const NAV_LINKS = [
   { name: 'Início', href: '/' },
   // 'Produtos' is handled specially in the Navbar component
-  { name: 'Quem Somos', href: '#about-us' },
-  { name: 'Blog', href: '#blog' }, // Updated to anchor for smooth scroll
-  { name: 'Revendedor', href: '#reseller' },
+  { name: 'Quem Somos', href: '/#about-us' },
+  { name: 'Blog', href: '/#blog' }, // Updated to anchor for smooth scroll
+  { name: 'Revendedor', href: '/#reseller' },
   // Contato removed as requested
 ];
 
 export const PRODUCT_CATEGORIES = [
   {
     id: "automotiva",
+    slug: "baterias-automotivas",
     title: "Baterias Automotivas",
     description: "A bateria é a principal fonte de energia do veículo. Contamos com uma gama completa de produtos e as melhores marcas do mercado, aliando qualidade e custo-benefício.",
-    heroImage: "https://www.guandabaterias.com.br/wp-content/uploads/2019/09/baterias-automotivas.png",
+    heroImage: "https://cdn.gabrielxavier.online/baterias-para-carro.webp",
     brands: [
-      { name: "Heliar AGM", img: "https://picsum.photos/200/200?random=10" },
-      { name: "Heliar EFB", img: "https://picsum.photos/200/200?random=11" },
-      { name: "Heliar Convencional", img: "https://picsum.photos/200/200?random=12" },
-      { name: "Cral Top Line", img: "https://picsum.photos/200/200?random=13" },
-      { name: "Cral Standard", img: "https://picsum.photos/200/200?random=14" },
-      { name: "Cral Prime", img: "https://picsum.photos/200/200?random=15" },
-      { name: "Lubax", img: "https://picsum.photos/200/200?random=16" },
-      { name: "América", img: "https://picsum.photos/200/200?random=17" },
-      { name: "Strada", img: "https://picsum.photos/200/200?random=18" },
+      { name: "Heliar AGM", img: "https://cdn.gabrielxavier.online/baterias-para-carro.webp" },
+      { name: "Heliar EFB", img: "https://cdn.gabrielxavier.online/baterias-para-carro.webp" },
+      { name: "Heliar Convencional", img: "https://cdn.gabrielxavier.online/baterias-para-carro.webp" },
+      { name: "Cral Top Line", img: "https://cdn.gabrielxavier.online/baterias-para-carro.webp" },
+      { name: "Cral Standard", img: "https://cdn.gabrielxavier.online/baterias-para-carro.webp" },
+      { name: "Cral Line", img: "https://cdn.gabrielxavier.online/baterias-para-carro.webp" },
+      { name: "Cral Prime", img: "https://cdn.gabrielxavier.online/baterias-para-carro.webp" },
+      { name: "Lubax", img: "https://cdn.gabrielxavier.online/baterias-para-carro.webp" },
+      { name: "América", img: "https://cdn.gabrielxavier.online/baterias-para-carro.webp" },
+      { name: "Strada", img: "https://cdn.gabrielxavier.online/baterias-para-carro.webp" },
     ]
   },
   {
     id: "moto",
+    slug: "baterias-de-moto",
     title: "Baterias de Moto",
     description: "A bateria é essencial para o bom funcionamento do veículo. Grandes marcas e produtos compõem o nosso portfólio de baterias para motocicletas, com a mais avançada tecnologia e desempenho.",
-    heroImage: "https://www.guandabaterias.com.br/wp-content/uploads/2019/09/baterias-de-moto.png",
+    heroImage: "https://cdn.gabrielxavier.online/bateria-para-moto.webp",
     brands: [
       { name: "Heliar Moto", img: "https://picsum.photos/200/200?random=20" },
       { name: "Moura Moto", img: "https://picsum.photos/200/200?random=21" },
@@ -54,9 +66,10 @@ export const PRODUCT_CATEGORIES = [
   },
   {
     id: "performance",
-    title: "Alta Performance",
+    slug: "baterias-de-alta-performance",
+    title: "Baterias de Alta Performance",
     description: "Baterias para aplicações especiais. As baterias de Alta Performance são desenvolvidas para uso em som automotivo, som para competição, tuning e outros acessórios.",
-    heroImage: "https://www.guandabaterias.com.br/wp-content/uploads/2019/09/baterias-alta-performace-e1567530716748.png",
+    heroImage: "https://cdn.gabrielxavier.online/bateria-alta-performance.webp",
     brands: [
       { name: "Optima RedTop", img: "https://picsum.photos/200/200?random=30" },
       { name: "Optima YellowTop", img: "https://picsum.photos/200/200?random=31" },
@@ -64,9 +77,10 @@ export const PRODUCT_CATEGORIES = [
   },
   {
     id: "estacionaria",
+    slug: "baterias-estacionarias",
     title: "Baterias Estacionárias",
     description: "As baterias estacionárias têm como característica a descarga profunda de energia e podem ser utilizadas em UPS/Nobreaks, PABS, telecomunicações, sinalização, entre outros.",
-    heroImage: "https://www.guandabaterias.com.br/wp-content/uploads/2019/09/baterias-estacionarias.png",
+    heroImage: "https://cdn.gabrielxavier.online/baterias-estacionarias.webp",
     brands: [
       { name: "Freedom", img: "https://picsum.photos/200/200?random=40" },
       { name: "Moura Clean", img: "https://picsum.photos/200/200?random=41" },
@@ -80,7 +94,7 @@ export const PRODUCTS = [
     name: "Heliar AGM Start-Stop",
     category: "Automotiva",
     tech: "AGM",
-    image: "https://www.guandabaterias.com.br/wp-content/uploads/2019/09/baterias-automotivas.png",
+    image: "https://cdn.gabrielxavier.online/baterias-para-carro.webp",
     features: ["Tecnologia AGM", "Veículos Start-Stop", "Maior durabilidade"]
   },
   {
@@ -88,7 +102,7 @@ export const PRODUCTS = [
     name: "Moura Moto",
     category: "Moto",
     tech: "VRLA",
-    image: "https://www.guandabaterias.com.br/wp-content/uploads/2019/09/baterias-de-moto.png",
+    image: "https://cdn.gabrielxavier.online/bateria-para-moto.webp",
     features: ["Pronta para uso", "Maior corrente de partida", "Livre de manutenção"]
   },
   {
@@ -96,7 +110,7 @@ export const PRODUCTS = [
     name: "Bateria Caminhão 150Ah",
     category: "Pesada",
     tech: "Chumbo-Ácido",
-    image: "https://www.guandabaterias.com.br/wp-content/uploads/2019/09/baterias-estacionarias.png",
+    image: "https://cdn.gabrielxavier.online/baterias-estacionarias.webp",
     features: ["Linha Pesada", "Alta Resistência", "Placas Reforçadas"]
   },
   {
@@ -104,7 +118,7 @@ export const PRODUCTS = [
     name: "Impact Som e Tuning",
     category: "Som",
     tech: "Alta Performance",
-    image: "https://www.guandabaterias.com.br/wp-content/uploads/2019/09/baterias-alta-performace-e1567530716748.png",
+    image: "https://cdn.gabrielxavier.online/baterias-para-carro.webp",
     features: ["Pico de Potência", "Ciclagem Profunda", "Áudio de Qualidade"]
   },
   {
@@ -112,7 +126,7 @@ export const PRODUCTS = [
     name: "Heliar EFB",
     category: "Automotiva",
     tech: "EFB",
-    image: "https://www.guandabaterias.com.br/wp-content/uploads/2019/09/baterias-automotivas.png",
+    image: "https://cdn.gabrielxavier.online/baterias-para-carro.webp",
     features: ["Alta durabilidade", "Start-Stop EFB", "Garantia 24 Meses"]
   },
   {
@@ -120,7 +134,7 @@ export const PRODUCTS = [
     name: "Cral Moto",
     category: "Moto",
     tech: "Convencional",
-    image: "https://www.guandabaterias.com.br/wp-content/uploads/2019/09/baterias-de-moto.png",
+    image: "https://cdn.gabrielxavier.online/bateria-para-moto.webp",
     features: ["Custo-benefício", "Robustez", "Garantia Nacional"]
   }
 ];

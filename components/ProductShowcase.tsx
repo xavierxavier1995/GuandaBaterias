@@ -43,7 +43,7 @@ const ProductShowcase: React.FC = () => {
                  <img 
                     src={category.heroImage} 
                     alt={`Imagem ilustrativa de ${category.title}`}
-                    className="relative z-10 w-full max-w-[400px] h-auto object-contain drop-shadow-2xl transform transition-transform duration-500 group-hover:rotate-2 group-hover:scale-105"
+                    className="relative z-10 w-full max-w-[400px] h-auto object-contain drop-shadow-2xl transform transition-transform duration-500 group-hover:rotate-2 group-hover:scale-105 rounded-3xl"
                     width="400"
                     height="400"
                     loading="lazy"

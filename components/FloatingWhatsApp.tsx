@@ -1,4 +1,4 @@
-import React from 'react';
+import * as React from 'react';
 import { MessageCircle } from 'lucide-react';
 import { BUSINESS_INFO } from '../constants';
 

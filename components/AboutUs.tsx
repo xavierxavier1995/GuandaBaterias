@@ -37,9 +37,9 @@ const AboutUs: React.FC = () => {
              {/* Images Grid */}
              <div className="grid grid-cols-2 gap-4 relative z-10">
                 <img 
-                  src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=800&auto=format&fit=crop" 
-                  alt="Estrutura Moderna" 
-                  className="rounded-2xl shadow-xl w-full h-64 object-cover transform translate-y-8"
+                  src="https://cdn.gabrielxavier.online/guanda-baterias-fachada.webp" 
+                  alt="Fachada Guanda Baterias Bauru" 
+                  className="rounded-2xl shadow-xl w-full h-64 object-cover transform translate-y-8 border border-slate-200"
                   loading="lazy"
                   width="400"
                   height="300"
@@ -47,7 +47,7 @@ const AboutUs: React.FC = () => {
                 />
                 <img 
                   src="https://images.unsplash.com/photo-1556761175-5973dc0f32e7?q=80&w=800&auto=format&fit=crop" 
-                  alt="Equipe Guanda" 
+                  alt="Equipe Guanda Atendimento" 
                   className="rounded-2xl shadow-xl w-full h-64 object-cover"
                   loading="lazy"
                   width="400"
@@ -120,7 +120,7 @@ const AboutUs: React.FC = () => {
 
             <div className="bg-white rounded-3xl p-4 md:p-8 shadow-2xl shadow-blue-950/50">
                <img 
-                 src="https://www.guandabaterias.com.br/wp-content/uploads/2020/02/Regioes-guanda-768x469.jpg" 
+                 src="https://cdn.gabrielxavier.online/area-de-atuacao-sao-paulo.webp" 
                  alt="Mapa de atuação Guanda Baterias no estado de SP" 
                  className="w-full h-auto object-contain rounded-xl mx-auto hover:scale-[1.02] transition-transform duration-500"
                  loading="lazy"
